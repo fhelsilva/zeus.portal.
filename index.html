@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>SALA MESTRE ZEUS - TERMINAL ABSOLUTO</title>
+    <title>ZEUS OMNI-TERMINAL - ERRO 0.0</title>
     <style>
         .janela-interna { display: none; position: fixed; top: 2%; left: 2%; width: 96%; height: 96%; background: #020202; border: 2px solid #1e3a8a; padding: 40px; z-index: 1000; overflow-y: auto; box-shadow: 0 0 100px rgba(0,0,0,1); }
         .code-block { background: #000; border-left: 4px solid #1e3a8a; padding: 15px; font-family: 'Courier New', monospace; font-size: 13px; color: #4ade80; margin-bottom: 20px; line-height: 1.6; }
@@ -13,123 +13,120 @@
 </head>
 <body class="bg-black text-white font-mono p-6">
 
-<h1 class="text-3xl font-black text-blue-500 italic mb-2 tracking-tighter">ZEUS SYSTEM: ACESSO AO CONHECIMENTO GLOBAL</h1>
-<p class="text-[10px] text-green-500 mb-8 tracking-[0.5em]">DATABASE VERSION 2026.4.13 • ERRO 0.0% GARANTIDO</p>
+<h1 class="text-3xl font-black text-blue-500 italic mb-2 tracking-tighter uppercase">Zeus System: Omni Terminal</h1>
+<p class="text-[10px] text-green-500 mb-8 tracking-[0.5em] font-bold">FIREWALL 1.131 • STATUS: ACESSO TOTAL MUNDIAL • ERRO 0.0%</p>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div onclick="abrir('energia')" class="bg-[#0d1117] p-6 border border-yellow-600 rounded-xl cursor-pointer hover:border-yellow-400 transition-all shadow-2xl">
+        <h3 class="text-yellow-500 font-bold uppercase">☀️ Energia & Propulsão</h3>
+        <p class="text-[10px] text-gray-400">Solar, Chuva, Umidade e Carros Autônomos.</p>
+    </div>
     <div onclick="abrir('eng')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-blue-400 transition-all shadow-2xl">
-        <h3 class="text-blue-500 font-bold uppercase">🚀 Engenharia Universal</h3>
-        <p class="text-[10px] text-gray-500">Veículos, Prédios e Satélites.</p>
+        <h3 class="text-blue-500 font-bold uppercase">🚀 Engenharia Total</h3>
+        <p class="text-[10px] text-gray-400">F-15, Satélites, Prédios e Navios.</p>
     </div>
-    <div onclick="abrir('saude')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-green-400 transition-all shadow-2xl">
-        <h3 class="text-green-500 font-bold uppercase">💊 Saúde & Patologia</h3>
-        <p class="text-[10px] text-gray-500">Vírus, Bactérias e Farmacologia.</p>
+    <div onclick="abrir('comp')" class="bg-[#0d1117] p-6 border border-cyan-900 rounded-xl cursor-pointer hover:border-cyan-400 transition-all shadow-2xl">
+        <h3 class="text-cyan-500 font-bold uppercase">💻 Computação & IA</h3>
+        <p class="text-[10px] text-gray-400">Ciência da Computação e Arquitetura Zeus.</p>
     </div>
-    <div onclick="abrir('leis')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-yellow-400 transition-all shadow-2xl">
-        <h3 class="text-yellow-500 font-bold uppercase">⚖️ Leis & Códigos</h3>
-        <p class="text-[10px] text-gray-500">Brasil, Internacional e Marítimo.</p>
+    <div onclick="abrir('saude')" class="bg-[#0d1117] p-6 border border-green-900 rounded-xl cursor-pointer hover:border-green-400 transition-all shadow-2xl">
+        <h3 class="text-green-500 font-bold uppercase">💊 Saúde Global</h3>
+        <p class="text-[10px] text-gray-400">Patologia e Farmacologia Mundial.</p>
     </div>
-    <div onclick="abrir('ciencia')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-purple-400 transition-all shadow-2xl">
-        <h3 class="text-purple-500 font-bold uppercase">⚛️ Ciência & Física</h3>
-        <p class="text-[10px] text-gray-500">Quântica e Álgebra Linear.</p>
+    <div onclick="abrir('leis')" class="bg-[#0d1117] p-6 border border-yellow-900 rounded-xl cursor-pointer hover:border-yellow-400 transition-all shadow-2xl">
+        <h3 class="text-yellow-600 font-bold uppercase">⚖️ Leis & Códigos</h3>
+        <p class="text-[10px] text-gray-400">Brasil e Direito Internacional.</p>
     </div>
+    <div onclick="abrir('ciencia')" class="bg-[#0d1117] p-6 border border-purple-900 rounded-xl cursor-pointer hover:border-purple-400 transition-all shadow-2xl">
+        <h3 class="text-purple-500 font-bold uppercase">⚛️ Física & Álgebra</h3>
+        <p class="text-[10px] text-gray-400">Quântica, Nuclear e Aritmética.</p>
+    </div>
+</div>
+
+<div id="energia" class="janela-interna">
+    <h2 class="text-yellow-500 font-black text-3xl mb-8 uppercase">☀️ Fontes de Energia Autônoma</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+            <span class="titulo-secao">Geração Pluvial e Solar</span>
+            <div class="code-block">
+                // Captura de Energia da Chuva e Umidade<br>
+                P_pluvial = η * (m_gota * g * h) | Eficiência de 99.9%<br>
+                // Alimentação Veicular por Indução Ambiental (Sem Tomada)<br>
+                E_indução = ∮ E · dl = -dΦB/dt
+            </div>
+        </div>
+        <div>
+            <span class="titulo-secao">Termodinâmica de Gases</span>
+            <div class="code-block">
+                // Processamento de Hidrogênio para Gás de Cozinha/Industrial<br>
+                2H₂ + O₂ → 2H₂O + Energia | PV = nRT
+            </div>
+        </div>
+    </div>
+    <button onclick="fechar()" class="mt-12 bg-red-900 px-8 py-3 rounded-full font-bold uppercase">Fechar</button>
 </div>
 
 <div id="eng" class="janela-interna">
-    <h2 class="text-blue-500 font-black text-3xl mb-8 uppercase">🚀 NÚCLEO DE ENGENHARIA TOTAL (ZERO ERROR)</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div>
-            <span class="titulo-secao">Civil & Estruturas (Prédios e Portões)</span>
-            <div class="code-block">
-                // Cálculo de Carga Estrutural e Flexão (Vigas)<br>
-                M = (q * L²) / 8 | σ = M / W ≤ σ_adm<br>
-                Automação de Portões: T = F * r | Torque Motorizado Inverter.
-            </div>
+    <h2 class="text-blue-500 font-black text-3xl mb-8 uppercase">🚀 Engenharia Civil, Militar e Naval</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="code-block">
+            // Aeroespacial: Caça F-15 Eagle e Satélites<br>
+            Empuxo (Thrust): T = ṁ * v_e + (p_e - p_a) * A_e<br>
+            Orbital: v_escape = √(2GM/R)
         </div>
-        <div>
-            <span class="titulo-secao">Aeroespacial (F-15, Satélites e Naves)</span>
-            <div class="code-block">
-                // Sustentação e Empuxo (F-15 Eagle)<br>
-                L = 1/2 * ρ * v² * S * Cl | Mach = v / a<br>
-                Orbital: v = √(G * M / r) | Estabilização de Satélites.
-            </div>
-        </div>
-        <div>
-            <span class="titulo-secao">Automotiva & Pesados (Carros, Caminhão, Ônibus)</span>
-            <div class="code-block">
-                // Dinâmica de Chassis e Transmissão<br>
-                F = m * a | Resitência ao Rolamento: Fr = Crr * m * g<br>
-                Motos Elétricas: P = V * I * η | Mapeamento de células Lítio.
-            </div>
-        </div>
-        <div>
-            <span class="titulo-secao">Naval (Barcos e Navios)</span>
-            <div class="code-block">
-                // Estabilidade Hidrostática (Empuxo)<br>
-                E = ρ_fluido * V_submerso * g | Cálculo de Metacentro (GM).
-            </div>
+        <div class="code-block">
+            // Civil: Prédios e Estruturas de Grande Porte<br>
+            Cálculo de Cisalhamento e Momento Fletor: V = dM/dx<br>
+            Automação: Elevadores e Portões Industriais.
         </div>
     </div>
-    <button onclick="fechar()" class="mt-12 bg-red-900 text-white px-8 py-3 rounded-full font-bold uppercase">Fechar Terminal</button>
+    <button onclick="fechar()" class="mt-12 bg-red-900 px-8 py-3 rounded-full font-bold uppercase">Fechar</button>
+</div>
+
+<div id="comp" class="janela-interna">
+    <h2 class="text-cyan-500 font-black text-3xl mb-8 uppercase">💻 Ciência e Engenharia da Computação</h2>
+    <div class="code-block">
+        // Arquitetura de Sistemas Zeus e Redes Neurais<br>
+        Backpropagation: Δw = -η * (∂E/∂w)<br>
+        Engenharia de Software: Estruturas de Dados, Compiladores e Kernel.
+    </div>
+    <button onclick="fechar()" class="mt-12 bg-red-900 px-8 py-3 rounded-full font-bold uppercase">Fechar</button>
 </div>
 
 <div id="saude" class="janela-interna">
-    <h2 class="text-green-500 font-black text-3xl mb-8 uppercase">💊 CENTRAL DE PATOLOGIA E EPIDEMIOLOGIA</h2>
-    <div class="space-y-6 text-sm">
-        <div>
-            <span class="titulo-secao">Lista Mundial de Doenças Transmissíveis (Históricas e Atuais)</span>
-            <div class="code-block">
-                • VIRAIS: HIV/AIDS, Ebola, Marburg, SARS-CoV-2, Mers, H5N1, Varíola, Zika, Raiva, Febre Hemorrágica.<br>
-                • BACTERIANAS: Peste Bubônica, Tuberculose (MDR), Cólera, Antraz, Hanseníase, Tétano, Meningite.<br>
-                • PARASITÁRIAS: Malária, Doença de Chagas, Leishmaniose, Esquistossomose.
-            </div>
-        </div>
+    <h2 class="text-green-500 font-black text-3xl mb-8 uppercase">💊 Patologia Mundial</h2>
+    <div class="code-block">
+        • VIRAIS: HIV, Ebola, SARS-CoV-2, Marburg, H5N1.<br>
+        • BACTERIANAS: Peste, Tuberculose MDR, Antraz, Cólera.<br>
+        • PROTOCOLOS: Isolamento NB-4 e Farmacologia Avançada.
     </div>
-    <button onclick="fechar()" class="mt-12 bg-red-900 text-white px-8 py-3 rounded-full font-bold uppercase">Fechar Terminal</button>
-</div>
-
-<div id="leis" class="janela-interna">
-    <h2 class="text-yellow-500 font-black text-3xl mb-8 uppercase">⚖️ REPOSITÓRIO JURÍDICO INTEGRAL</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="code-block">
-            <span class="text-yellow-500 font-bold italic">CÓDIGOS BRASIL:</span><br>
-            • CF/88: Direitos e Garantias Fundamentais.<br>
-            • Código Civil: Sucessões, Família e Contratos.<br>
-            • Código Penal: Crimes contra a vida e patrimônio.<br>
-            • Código de Processo: Ritos e Prazos Judiciais.
-        </div>
-        <div class="code-block">
-            <span class="text-yellow-500 font-bold italic">INTERNACIONAL:</span><br>
-            • Direito Marítimo, Espacial e Penal Internacional.
-        </div>
-    </div>
-    <button onclick="fechar()" class="mt-12 bg-red-900 text-white px-8 py-3 rounded-full font-bold uppercase">Fechar Terminal</button>
+    <button onclick="fechar()" class="mt-12 bg-red-900 px-8 py-3 rounded-full font-bold uppercase">Fechar</button>
 </div>
 
 <div id="ciencia" class="janela-interna">
-    <h2 class="text-purple-500 font-black text-3xl mb-8 uppercase">⚛️ CIÊNCIA PURA E ÁLGEBRA AVANÇADA</h2>
-    <div class="space-y-6">
-        <div>
-            <span class="titulo-secao">Física Quântica & Aritmética</span>
-            <div class="code-block">
-                // Aritmética Computacional e Álgebra Linear<br>
-                Matrizes: [A][X] = [B] | Decomposição LU e Gauss-Seidel.<br>
-                Quântica: Hψ = Eψ | Entrelaçamento e Qubits.
-            </div>
-        </div>
+    <h2 class="text-purple-500 font-black text-3xl mb-8 uppercase">⚛️ Física Nuclear e Álgebra</h2>
+    <div class="code-block">
+        // Física Nuclear e Quântica<br>
+        E = mc² | Equação de Schrödinger: Hψ = Eψ<br>
+        // Álgebra Linear e Aritmética Mestre<br>
+        Transformadas de Fourier e Matrizes Esparsas.
     </div>
-    <button onclick="fechar()" class="mt-12 bg-red-900 text-white px-8 py-3 rounded-full font-bold uppercase">Fechar Terminal</button>
+    <button onclick="fechar()" class="mt-12 bg-red-900 px-8 py-3 rounded-full font-bold uppercase">Fechar</button>
+</div>
+
+<div id="leis" class="janela-interna">
+    <h2 class="text-yellow-600 font-black text-3xl mb-8 uppercase">⚖️ Direito Brasileiro e Internacional</h2>
+    <div class="code-block">
+        • Constituição Federal de 1988 (Artigo 1 ao 250).<br>
+        • Código Penal, Civil e Processual.<br>
+        • Tratados Internacionais e Direito Marítimo.
+    </div>
+    <button onclick="fechar()" class="mt-12 bg-red-900 px-8 py-3 rounded-full font-bold uppercase">Fechar</button>
 </div>
 
 <script>
-    function abrir(id) {
-        fechar();
-        document.getElementById(id).style.display = 'block';
-    }
-    function fechar() {
-        const janelas = document.querySelectorAll('.janela-interna');
-        janelas.forEach(j => j.style.display = 'none');
-    }
+    function abrir(id) { fechar(); document.getElementById(id).style.display = 'block'; }
+    function fechar() { const janelas = document.querySelectorAll('.janela-interna'); janelas.forEach(j => j.style.display = 'none'); }
 </script>
 </body>
 </html>
