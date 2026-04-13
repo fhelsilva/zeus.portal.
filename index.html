@@ -5,83 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZEUS OS // PRIVACIDADE TOTAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
     <style>
-        body { background: #010409; color: #e6edf3; font-family: monospace; }
-        .folder { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 8px; cursor: pointer; text-align: center; transition: 0.3s; }
-        .folder:hover { border-color: #58a6ff; background: #1c2128; }
+        body { background: #010409; color: #e6edf3; font-family: monospace; overflow-x: hidden; }
+        .folder { background: #161b22; border: 1px solid #30363d; padding: 20px; border-radius: 12px; cursor: pointer; text-align: center; transition: 0.3s; }
+        .folder:hover { border-color: #58a6ff; transform: translateY(-5px); }
         .hidden { display: none; }
-        .btn-main { background: #238636; color: white; padding: 12px; rounded: 6px; font-weight: bold; width: 100%; }
+        .particle { position: absolute; width: 2px; height: 2px; background: #58a6ff; border-radius: 50%; opacity: 0.3; animation: float 10s infinite linear; }
+        @keyframes float { from { transform: translateY(100vh); } to { transform: translateY(-10vh); } }
     </style>
 </head>
 <body class="p-6">
 
-    <div id="step-pay" class="max-w-md mx-auto mt-10 p-6 bg-[#0d1117] border border-blue-900 rounded-lg shadow-2xl">
-        <h1 class="text-3xl font-black text-center text-white mb-4 italic">ZEUS <span class="text-blue-500">SYSTEM</span></h1>
-        <div class="text-center p-4 bg-green-900/10 border border-green-500/50 rounded mb-6">
-            <p class="text-[10px] text-green-500 font-bold mb-2 uppercase italic">Acesso Individual VIP: R$ 150,00</p>
-            <p class="text-sm font-bold">PIX: maiconfhel23@gmail.com</p>
+    <div id="particles-bg"></div>
+
+    <div id="step-pay" class="max-w-md mx-auto mt-10 p-8 bg-[#0d1117]/90 border border-blue-900 rounded-2xl shadow-2xl relative z-10">
+        <h1 class="text-4xl font-black text-center text-white mb-2 italic">ZEUS <span class="text-blue-500 text-2xl text-center">SYSTEM</span></h1>
+        
+        <div class="mb-6 p-2 border border-blue-500/20 rounded-lg text-center">
+            <p class="text-[8px] text-blue-400 uppercase mb-2">🔭 Live NASA Feed</p>
+            <div id="nasa-img" class="h-32 bg-black rounded overflow-hidden flex items-center justify-center text-[10px] text-slate-700 italic italic text-center">Conectando...</div>
         </div>
-        <button onclick="irParaCadastro()" class="btn-main uppercase text-xs tracking-widest">Já paguei, liberar meu acesso</button>
+
+        <div class="text-center p-6 bg-green-900/10 border border-green-500/50 rounded-lg mb-6">
+            <p class="text-[10px] text-green-500 font-bold mb-2 uppercase italic">Acesso Individual VIP: R$ 150,00</p>
+            <p class="text-sm font-bold text-white uppercase italic text-center">PIX: maiconfhel23@gmail.com</p>
+        </div>
+
+        <button onclick="irParaCadastro()" class="w-full bg-[#238636] hover:bg-green-600 text-white font-bold py-4 rounded-lg transition uppercase text-xs tracking-[0.2em] mb-4 italic text-center">
+            Já paguei, liberar meu acesso
+        </button>
+
+        <div class="text-center border-t border-slate-800 pt-4">
+            <button onclick="acessoAdmin()" class="text-[9px] text-slate-600 hover:text-blue-500 transition uppercase tracking-widest italic text-center">
+                ⚙️ Painel do Administrador (Felipe)
+            </button>
+        </div>
     </div>
 
-    <div id="step-register" class="hidden max-w-md mx-auto mt-10 p-6 bg-[#0d1117] border border-blue-900 rounded-lg">
-        <h2 class="text-xl font-bold mb-4 text-blue-400">CRIAR SUA ÁREA DE TRABALHO</h2>
-        <p class="text-[10px] text-slate-500 mb-4 uppercase">Escolha sua especialidade para separar as pastas</p>
-        
-        <input type="text" id="new-user" placeholder="Seu Nome Completo" class="w-full bg-black border border-slate-800 p-3 rounded mb-3 outline-none">
-        
-        <select id="area-choice" class="w-full bg-black border border-slate-800 p-3 rounded mb-3 text-slate-400">
-            <option value="">Selecione sua Área de Estudo</option>
-            <option value="Engenharia">Engenharia Civil (Cálculos/Vigas)</option>
-            <option value="Fisica">Física Quântica (Partículas)</option>
-            <option value="Direito">Direito e Leis (Brasil/Mundo)</option>
-            <option value="Ciencia">Pesquisa Científica (Cura/Bio)</option>
-        </select>
-
-        <input type="password" id="new-pass" placeholder="Crie sua Senha Privada" class="w-full bg-black border border-slate-800 p-3 rounded mb-6 outline-none">
-        
-        <button onclick="finalizarCadastro()" class="btn-main">GERAR MINHA ESTAÇÃO DE TRABALHO</button>
-    </div>
-
-    <div id="step-desktop" class="hidden">
+    <div id="step-desktop" class="hidden max-w-6xl mx-auto relative z-10">
         <header class="flex justify-between items-center border-b border-blue-900 pb-4 mb-8">
-            <div>
-                <h1 class="text-2xl font-black italic">ZEUS <span class="text-blue-500 text-sm">WORKSTATION</span></h1>
-                <p id="user-welcome" class="text-[10px] text-green-500 uppercase font-bold mt-1"></p>
-            </div>
-            <button onclick="location.reload()" class="text-[9px] border border-red-900 px-3 py-1 rounded text-red-500">SAIR COM SEGURANÇA</button>
+            <h1 class="text-2xl font-black italic">ZEUS <span class="text-blue-500">WORKSTATION</span></h1>
+            <button onclick="location.reload()" class="text-[9px] border border-red-900 px-4 py-1 rounded text-red-500 italic text-center">SAIR DO SISTEMA</button>
         </header>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="folder">📂 MEUS ARQUIVOS</div>
-            <div id="folder-spec" class="folder border-blue-500">📂 PASTA DE ESPECIALIDADE</div>
-            <div class="folder">📂 CÁLCULOS TÉCNICOS</div>
-            <div class="folder">📂 PESQUISA GLOBAL</div>
-            <div class="folder">📂 LEIS E TRATADOS</div>
-            <div class="folder">📂 CIÊNCIA DA COMPUTAÇÃO</div>
+            <div class="folder border-blue-500">📂 CIÊNCIA DA COMPUTAÇÃO</div>
+            <div class="folder">📂 ENGENHARIA MUNDIAL</div>
+            <div class="folder">📂 FÍSICA QUÂNTICA</div>
+            <div class="folder">📂 ÁLGEBRA LINEAR</div>
+            <div class="folder">📂 ARITMÉTICA</div>
+            <div class="folder">📂 DIREITO & LEIS</div>
             <div class="folder text-red-500">📂 PESQUISA DA CURA</div>
-            <div class="folder text-yellow-500">📂 FINANÇAS/PIX</div>
+            <div class="folder text-slate-500">📂 MEUS ARQUIVOS</div>
         </div>
     </div>
 
     <script>
-        function irParaCadastro() {
-            document.getElementById('step-pay').classList.add('hidden');
-            document.getElementById('step-register').classList.remove('hidden');
+        // CRIA AS PARTÍCULAS DE FÍSICA
+        for(let i=0; i<30; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDelay = Math.random() * 10 + 's';
+            document.getElementById('particles-bg').appendChild(p);
         }
 
-        function finalizarCadastro() {
-            const nome = document.getElementById('new-user').value;
-            const area = document.getElementById('area-choice').value;
-            const pass = document.getElementById('new-pass').value;
+        // BUSCA IMAGEM DA NASA
+        async function getNasa() {
+            try {
+                const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
+                const data = await res.json();
+                document.getElementById('nasa-img').innerHTML = `<img src="${data.url}" class="w-full h-full object-cover opacity-60">`;
+            } catch(e) { document.getElementById('nasa-img').innerText = "Sistema Offline"; }
+        }
+        getNasa();
 
-            if(nome && area && pass) {
-                document.getElementById('step-register').classList.add('hidden');
+        function irParaCadastro() {
+            const senha = prompt("INSIRA SUA CHAVE MESTRA (Enviada após o Pix):");
+            if(senha === "felipe34") {
+                document.getElementById('step-pay').classList.add('hidden');
                 document.getElementById('step-desktop').classList.remove('hidden');
-                document.getElementById('user-welcome').innerText = `USUÁRIO: ${nome} | ÁREA: ${area}`;
-                document.getElementById('folder-spec').innerText = `📂 ESPECIALIDADE: ${area}`;
-            } else {
-                alert("Preencha todos os campos para criar sua área!");
+            } else { alert("Chave Inválida. Verifique o pagamento."); }
+        }
+
+        function acessoAdmin() {
+            const master = prompt("SENHA DO ADMINISTRADOR FELIPE:");
+            if(master === "adminzeus") {
+                alert("ACESSO ADMINISTRATIVO CONCEDIDO.");
+                document.getElementById('step-pay').classList.add('hidden');
+                document.getElementById('step-desktop').classList.remove('hidden');
             }
         }
     </script>
