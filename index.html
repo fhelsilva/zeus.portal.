@@ -2,67 +2,80 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>ZEUS - CONSTRUTOR UNIVERSAL</title>
 </head>
-<body class="bg-black text-white font-mono min-h-screen flex items-center justify-center p-6">
+<body class="bg-black text-white font-mono min-h-screen flex items-center justify-center p-4">
 
-<div id="login-box" class="max-w-xl w-full border-2 border-blue-900 bg-[#0d1117] p-10 rounded-2xl shadow-2xl">
-    <h1 class="text-4xl font-black text-blue-500 text-center italic mb-2">ZEUS SYSTEM</h1>
-    <p class="text-[10px] text-green-500 text-center font-bold tracking-[0.3em] mb-8">FIREWALL 1.131 ACTIVE</p>
+<div id="login-box" class="max-w-xl w-full border-2 border-blue-900 bg-[#0d1117] p-8 rounded-2xl shadow-[0_0_30px_rgba(30,58,138,0.4)]">
+    <h1 class="text-3xl font-black text-blue-500 text-center italic mb-1 uppercase">Zeus Calculation System</h1>
+    <p class="text-[9px] text-green-500 text-center font-bold tracking-widest mb-6 border-b border-blue-900 pb-4">FIREWALL 1.131 • CIÊNCIA & ENGENHARIA MUNDIAL</p>
     
-    <div class="space-y-4">
-        <input type="text" id="user" placeholder="USUÁRIO" class="w-full bg-black border border-blue-900 p-4 text-center rounded outline-none focus:border-blue-400">
-        <input type="password" id="pass" placeholder="CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-4 text-center rounded outline-none focus:border-blue-400">
+    <div class="space-y-4 text-center">
+        <input type="text" id="user" placeholder="INSIRA SEU ID" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-500">
+        <input type="password" id="pass" placeholder="INSIRA A CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-500">
         
-        <button onclick="entrar()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded uppercase shadow-lg">
-            Autenticar e Carregar Dados
+        <button onclick="ativarSistema()" class="w-full bg-green-600 hover:bg-green-700 text-black font-black py-4 rounded uppercase transition-all shadow-lg active:scale-95">
+            Autenticar & Carregar Dados
         </button>
     </div>
 
     <div class="mt-8 text-center border-t border-gray-800 pt-6">
-        <button onclick="adm()" class="text-gray-600 hover:text-blue-500 text-[10px] font-bold underline">ACESSO DO DONO (FELIPE)</button>
+        <p class="text-[9px] text-gray-500 mb-4 uppercase font-bold text-center">PIX: maiconfhel23@gmail.com</p>
+        <button onclick="acessoDono()" class="text-blue-600 hover:text-blue-400 text-[10px] font-black uppercase underline tracking-tighter">Painel do Dono (Felipe)</button>
     </div>
 </div>
 
-<div id="painel" class="hidden w-full max-w-6xl animate-pulse">
-    <h2 class="text-3xl font-black text-blue-400 mb-8 border-b border-blue-900 pb-4 italic">SALA MESTRE: CONSTRUINDO O IMPOSSÍVEL</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
-            <h3 class="text-blue-500 font-bold mb-2">🚀 ENGENHARIA</h3>
-            <p class="text-[11px] text-gray-400 italic">Motos, Naves e Estruturas Aeroespaciais.</p>
+<div id="painel-zeus" class="hidden w-full max-w-6xl">
+    <h2 class="text-2xl font-black text-blue-400 mb-6 italic uppercase border-b border-blue-900 pb-2">Sala Mestre Zeus: Construindo o Impossível</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-lg shadow-md">
+            <h3 class="text-blue-500 font-bold uppercase mb-2">🚀 Engenharia</h3>
+            <p class="text-[11px] text-gray-400 italic">Motos, Naves e Tecnologias de Defesa.</p>
         </div>
-        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
-            <h3 class="text-green-500 font-bold mb-2">💊 SAÚDE</h3>
-            <p class="text-[11px] text-gray-400 italic">Remédios e Doenças Psiquiátricas Mundiais.</p>
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-lg shadow-md">
+            <h3 class="text-green-500 font-bold uppercase mb-2">💊 Saúde</h3>
+            <p class="text-[11px] text-gray-400 italic">Medicamentos e Doenças Psiquiátricas.</p>
         </div>
-        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
-            <h3 class="text-yellow-500 font-bold mb-2">⚖️ LEIS</h3>
-            <p class="text-[11px] text-gray-400 italic">Constituição Federal e Leis Internacionais.</p>
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-lg shadow-md">
+            <h3 class="text-yellow-500 font-bold uppercase mb-2">⚖️ Leis</h3>
+            <p class="text-[11px] text-gray-400 italic">Leis do Brasil e Direito Internacional.</p>
         </div>
-        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
-            <h3 class="text-purple-500 font-bold mb-2">⚛️ CIÊNCIA</h3>
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-lg shadow-md">
+            <h3 class="text-purple-500 font-bold uppercase mb-2">⚛️ Ciência</h3>
             <p class="text-[11px] text-gray-400 italic">Física Quântica e Álgebra Linear.</p>
         </div>
     </div>
 </div>
 
 <script>
-    function entrar() {
-        if(document.getElementById('user').value && document.getElementById('pass').value) {
-            document.getElementById('login-box').classList.add('hidden');
-            document.getElementById('painel').classList.remove('hidden');
-            // Cronômetro de 5 minutos
+    function ativarSistema() {
+        const u = document.getElementById('user').value;
+        const p = document.getElementById('pass').value;
+
+        if(u !== "" && p !== "") {
+            alert("SISTEMA AUTORIZADO! Carregando todas as áreas por 5 minutos...");
+            document.getElementById('login-box').style.display = 'none';
+            document.getElementById('painel-zeus').classList.remove('hidden');
+            
+            // Inicia cronômetro de 5 minutos (300.000 milissegundos)
             setTimeout(() => {
-                alert("TESTE FINALIZADO! Realize o PIX para liberar o Zeus permanentemente.");
-                location.reload();
-            }, 300000);
-        } else { alert("Preencha os campos!"); }
+                alert("TESTE EXPIRADO! Realize o pagamento PIX para liberação permanente.");
+                location.reload(); 
+            }, 300000); 
+        } else {
+            alert("Por favor, preencha todos os campos para criar seu acesso.");
+        }
     }
-    function adm() {
-        if(prompt("SENHA MESTRE:") === "adminzeus") {
-            document.getElementById('login-box').classList.add('hidden');
-            document.getElementById('painel').classList.remove('hidden');
+
+    function acessoDono() {
+        let senha = prompt("SENHA MESTRE ZEUS:");
+        if(senha === "adminzeus") {
+            document.getElementById('login-box').style.display = 'none';
+            document.getElementById('painel-zeus').classList.remove('hidden');
+        } else {
+            alert("ACESSO NEGADO.");
         }
     }
 </script>
