@@ -1,127 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEUS OS // SISTEMA GLOBAL</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
-    <style>
-        body { background: #010409; color: #e6edf3; font-family: monospace; overflow-x: hidden; }
-        .hidden { display: none; }
-        
-        /* MOTOR DE PARTÍCULAS QUÂNTICAS - FÍSICA ATIVA */
-        #quantum-engine { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .particle { position: absolute; width: 3px; height: 3px; background: rgba(88, 166, 255, 0.5); border-radius: 50%; animation: move 12s infinite ease-in-out; }
-        .particle-light { background: rgba(35, 134, 54, 0.4); }
-        @keyframes move { from { transform: translate(0, 0); opacity: 0; } 20% { opacity: 0.8; } 80% { opacity: 0.8; } to { transform: translate(100vw, 100vh); opacity: 0; } }
-        
-        /* ESTILOS DE PASTAS E CONTEÚDO */
-        .card-zeus { background: #0d1117; border: 1px solid #30363d; padding: 25px; border-radius: 12px; cursor: pointer; transition: 0.3s; position: relative; z-index: 2; }
-        .card-zeus:hover { border-color: #238636; box-shadow: 0 0 20px rgba(35, 134, 54, 0.2); }
-    </style>
-</head>
-<body class="p-6 md:p-12 relative">
+<div id="login-box" class="max-w-xl mx-auto mt-10 p-8 border border-blue-900 bg-[#0d1117] rounded-xl shadow-2xl relative z-2">
+    <h1 class="text-3xl font-black text-white text-center">ZEUS SYSTEM</h1>
+    <p class="text-[10px] text-green-500 text-center font-bold mb-6">PIX: maiconfhel23@gmail.com</p>
 
-    <div id="quantum-engine"></div>
+    <input type="password" id="entry-key" placeholder="DIGITE A CHAVE" class="w-full bg-black border border-blue-900 p-4 text-white text-center mb-4 rounded">
+    
+    <button onclick="autenticar()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded uppercase mb-4">
+        AUTENTICAR & CARREGAR DADOS
+    </button>
 
-    <div id="login-box" class="max-w-xl mx-auto mt-10 p-8 border border-blue-900 bg-[#0d1117] rounded-xl shadow-2xl relative z-2">
-        <header class="text-center mb-8 pb-4 border-b border-blue-900/30">
-            <h1 class="text-3xl font-black italic text-white uppercase tracking-tighter">ZEUS <span class="text-blue-500 text-2xl uppercase">SYSTEM</span></h1>
-            <p class="text-[10px] text-green-500 font-bold mt-2">PAGAMENTO VIA PIX: maiconfhel23@gmail.com</p>
-        </header>
+    <button onclick="acessoAdm()" class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 rounded uppercase text-sm">
+        ENTRAR COMO ADMINISTRADOR
+    </button>
+</div>
 
-        <p class="text-[11px] mb-8 text-slate-500 text-center italic italic uppercase">
-            "Cálculos de Álgebra, Física Quântica e Engenharias Mundiais Protegidos pelo Firewall 1.131"
-        </p>
+<script>
+    // Seus arquivos de Engenharia e Cálculo aparecem aqui depois do login
+    function acessoAdm() {
+        let senha = prompt("SENHA MESTRE DO FELIPE:");
+        if(senha === "adminzeus") {
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('main-panel').classList.remove('hidden');
+        } else { alert("ACESSO NEGADO"); }
+    }
 
-        <input type="password" id="entry-key" placeholder="DIGITE SUA CHAVE DE ACESSO" 
-               class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded mb-4 outline-none focus:border-green-500">
-        
-        <button onclick="autenticar()" class="w-full bg-blue-600 hover:bg-green-600 text-white font-bold py-4 rounded transition uppercase text-xs tracking-widest italic text-center">
-            Acessar Todo Conhecimento Universal
-        </button>
-    </div>
-
-    <div id="main-panel" class="hidden max-w-7xl mx-auto relative z-2">
-        <header class="border-b border-blue-900 pb-6 mb-12 flex justify-between items-center">
-            <div>
-                <h1 class="text-5xl font-black italic text-white">ZEUS <span class="text-blue-500">ENGINE</span></h1>
-                <p class="text-xs text-slate-600 mt-2 uppercase">Central de Cálculo e Pesquisa Global // ADMIN: FELIPE</p>
-            </div>
-            <button onclick="location.reload()" class="text-[9px] border border-red-900 px-4 py-1 rounded text-red-500 hover:bg-red-900/10 italic text-center">LOGOUT</button>
-        </header>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="card-zeus text-purple-400">
-                <h3 class="text-lg font-bold italic mb-3 uppercase">⚛ FÍSICA QUÂNTICA</h3>
-                <p class="text-[10px] text-slate-500">Mecânica de partículas e equações complexas.</p>
-            </div>
-
-            <div class="card-zeus text-emerald-400">
-                <h3 class="text-lg font-bold italic mb-3 uppercase">∑ ÁLGEBRA LINEAR</h3>
-                <input type="text" id="solveInput" placeholder="Digite cálculo matricial..." class="w-full bg-black border border-emerald-900 p-2 text-xs rounded mb-2">
-                <button onclick="resolverMatriz()" class="text-[9px] bg-emerald-800 px-4 py-2 rounded text-white font-bold">SOLVE</button>
-                <div id="matrizRes" class="mt-2 text-emerald-400 text-sm font-bold"></div>
-            </div>
-
-            <div class="card-zeus text-sky-400">
-                <h3 class="text-lg font-bold italic mb-3 uppercase">🏗 ENGENHARIA MUNDIAL</h3>
-                <p class="text-[10px] text-slate-500">Cálculos de vigas, estruturas e hidráulica.</p>
-            </div>
-
-            <div class="card-zeus text-yellow-500">
-                <h3 class="text-lg font-bold italic mb-3 uppercase">⚖ TODAS AS LEIS</h3>
-                <p class="text-[10px] text-slate-500">Base Jurídica Brasileira e Internacional.</p>
-            </div>
-
-            <div class="card-zeus text-orange-400">
-                <h3 class="text-lg font-bold italic mb-3 uppercase">💻 CIÊNCIA DA COMPUTAÇÃO</h3>
-                <p class="text-[10px] text-slate-500">Algoritmos Zeus e Inteligência Artificial.</p>
-            </div>
-
-            <div class="card-zeus text-red-500">
-                <h3 class="text-lg font-bold italic mb-3 uppercase">🧪 PESQUISA DA CURA</h3>
-                <p class="text-[10px] text-slate-500">Base de Dados Científica Global.</p>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        // MOTOR DE CIÊNCIA: CRIA PARTÍCULAS QUÂNTICAS "SOBREVOANDO"
-        for(let i=0; i<40; i++) {
-            let p = document.createElement('div');
-            p.className = 'particle';
-            if(Math.random() > 0.5) p.className += ' particle-light';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.top = Math.random() * 100 + 'vh';
-            p.style.animationDelay = Math.random() * 10 + 's';
-            p.style.animationDuration = Math.random() * 15 + 10 + 's';
-            document.getElementById('quantum-engine').appendChild(p);
-        }
-
-        // FUNÇÃO DE ACESSO (O TUDO)
-        function autenticar() {
-            if(document.getElementById('entry-key').value === "felipe34") {
-                document.getElementById('login-box').classList.add('hidden');
-                document.getElementById('main-panel').classList.remove('hidden');
-                document.getElementById('entry-key').value = "";
-            } else { alert("ACESSO NEGADO: Realize o Pix de R$ 150,00."); }
-        }
-
-        // MOTOR DE CÁLCULO MUNDIAL (MATHJS)
-        function resolverMatriz() {
-            const exp = document.getElementById('solveInput').value;
-            try {
-                const resultado = math.evaluate(exp);
-                document.getElementById('matrizRes').innerText = "ZEUS SOLVE: " + resultado;
-            } catch (e) {
-                document.getElementById('matrizRes').innerText = "ERRO TÉCNICO: Cálculo inválido.";
-            }
-        }
-    </script>
-</body>
-</html>
+    function autenticar() {
+        if(document.getElementById('entry-key').value === "felipe34") {
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('main-panel').classList.remove('hidden');
+        } else { alert("CHAVE INVÁLIDA"); }
+    }
+</script>
 
