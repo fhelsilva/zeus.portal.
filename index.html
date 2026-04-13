@@ -3,92 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEUS // GLOBAL RESEARCH & CALCULATION</title>
+    <title>ZEUS GLOBAL // TOTAL KNOWLEDGE SYSTEM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: #010409; color: #c9d1d9; font-family: 'Courier New', monospace; }
-        .folder-card { background: #0d1117; border: 1px solid #30363d; padding: 20px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .folder-card:hover { border-color: #58a6ff; background: #161b22; }
-        .pix-header { border-bottom: 2px solid #238636; background: rgba(35, 134, 54, 0.1); }
+        .folder-card { background: #0d1117; border: 1px solid #30363d; padding: 25px; border-radius: 8px; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
+        .folder-card:hover { border-color: #58a6ff; background: #161b22; transform: translateY(-5px); }
+        .folder-card::after { content: 'LOCK'; position: absolute; top: 10px; right: 10px; font-size: 8px; color: #f87171; border: 1px solid #f87171; padding: 2px 5px; }
+        .pix-header { border: 2px solid #238636; background: rgba(35, 134, 54, 0.05); }
         .hidden { display: none; }
+        .formula-bg { font-size: 10px; color: #1e293b; position: absolute; z-index: -1; }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-4 md:p-10">
 
-    <div id="gatekeeper" class="max-w-xl mx-auto mt-10">
-        <div class="pix-header p-6 rounded-t-lg text-center">
-            <h1 class="text-2xl font-bold text-white mb-2 uppercase">Zeus Calculation System</h1>
-            <p class="text-xs text-green-500 font-bold">PAGAMENTO VIA PIX: maiconfhel23@gmail.com</p>
-        </div>
-        <div class="bg-[#0d1117] p-8 border border-[#30363d] rounded-b-lg shadow-2xl">
-            <p class="text-[10px] text-slate-400 mb-6 text-center italic">"Cálculos de Álgebra, Física Quântica e Engenharias Mundiais Protegidos pelo Firewall 1.131"</p>
-            <input type="password" id="master-key" placeholder="INSIRA A CHAVE DE ACESSO" 
-                   class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded mb-6 outline-none focus:border-blue-500">
-            <button onclick="unlock()" class="w-full bg-[#238636] hover:bg-[#2ea043] text-white font-bold py-4 rounded transition text-xs tracking-[0.2em]">
-                AUTENTICAR & CARREGAR DADOS
-            </button>
+    <div id="gatekeeper" class="max-w-2xl mx-auto mt-10">
+        <div class="pix-header p-8 rounded-lg text-center shadow-2xl">
+            <h1 class="text-4xl font-black text-white mb-4 italic uppercase tracking-tighter">ZEUS OS 1.131</h1>
+            <p class="text-green-500 font-bold text-sm mb-6 underline">CHAVE DE ACESSO VIA PIX: maiconfhel23@gmail.com</p>
+            
+            <div class="bg-black/40 p-6 rounded-lg border border-slate-800 mb-6">
+                <p class="text-xs text-slate-400 mb-4 uppercase">Para desbloquear toda a base de dados mundial (Física, Engenharia, Leis e Ciência):</p>
+                <input type="password" id="master-key" placeholder="DIGITE SUA CHAVE DE ACESSO" 
+                       class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded mb-4 outline-none focus:border-blue-500 font-bold">
+                <button onclick="unlock()" class="w-full bg-blue-700 hover:bg-green-600 text-white font-bold py-4 rounded transition uppercase tracking-[0.3em] text-xs">
+                    INICIALIZAR SISTEMA GLOBAL
+                </button>
+            </div>
         </div>
     </div>
 
     <div id="main-portal" class="hidden">
-        <header class="flex flex-col md:flex-row justify-between items-end mb-10 border-b border-[#30363d] pb-6">
+        <header class="border-b border-blue-900 pb-6 mb-10 flex justify-between items-center">
             <div>
-                <h1 class="text-4xl font-black text-white">ZEUS <span class="text-blue-500">GLOBAL</span></h1>
-                <p class="text-[10px] tracking-widest text-slate-500">ENGINEERING, QUANTUM PHYSICS & ALGEBRA CORE</p>
+                <h1 class="text-5xl font-black italic text-white">ZEUS <span class="text-blue-500">TOTAL</span></h1>
+                <p class="text-xs text-slate-500 mt-2 uppercase tracking-[0.5em]">Central de Pesquisa e Cálculo Universal</p>
             </div>
-            <div class="text-right mt-4 md:mt-0">
-                <p class="text-[10px] text-blue-400">STATUS: SISTEMA OPERACIONAL</p>
-                <p class="text-[10px] text-slate-500 uppercase">Local: São Paulo Hub</p>
+            <div class="text-right">
+                <p class="text-[10px] text-green-500">ENGENHARIA CIVIL | FÍSICA QUÂNTICA | DIREITO GLOBAL</p>
+                <p class="text-[10px] text-slate-600 font-bold uppercase">Admin: Felipe.34</p>
             </div>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div class="folder-card" onclick="alert('Carregando: Matrizes, Espaços Vetoriais e Transformações...')">
-                <h3 class="text-blue-400 font-bold text-sm mb-2">∑ ÁLGEBRA LINEAR</h3>
-                <p class="text-[9px] text-slate-500">Cálculos de determinantes, autovetores e sistemas lineares complexos.</p>
+            <div class="folder-card" onclick="alert('Abrindo Calculadoras de Engenharia Civil, Mecânica e Elétrica Mundial...')">
+                <h3 class="text-blue-500 font-black mb-2 uppercase">🏗 TODA ENGENHARIA</h3>
+                <p class="text-[10px] text-slate-400">Cálculos de vigas, estruturas, hidráulica, drenagem e normas mundiais.</p>
             </div>
 
             <div class="folder-card">
-                <h3 class="text-purple-400 font-bold text-sm mb-2">⚛ FÍSICA QUÂNTICA</h3>
-                <p class="text-[9px] text-slate-500">Equações de Schrödinger, Mecânica Matricial e Pesquisa de Partículas.</p>
+                <h3 class="text-purple-500 font-black mb-2 uppercase">⚛ FÍSICA QUÂNTICA</h3>
+                <p class="text-[10px] text-slate-400">Mecânica de partículas, equações complexas e relatividade geral.</p>
             </div>
 
             <div class="folder-card">
-                <h3 class="text-green-400 font-bold text-sm mb-2">🏗 ENGENHARIA GLOBAL</h3>
-                <p class="text-[9px] text-slate-500">Civil (Vigas/Cálculo I), Mecânica, Elétrica e Aeronáutica.</p>
-            </div>
-
-            <div class="folder-card border-l-4 border-red-500">
-                <h3 class="text-red-400 font-bold text-sm mb-2">🧪 PESQUISA CIENTÍFICA (CURA)</h3>
-                <p class="text-[9px] text-slate-500">Base de dados mundial para pesquisas de biotecnologia e curas.</p>
+                <h3 class="text-emerald-500 font-black mb-2 uppercase">∑ ÁLGEBRA & ARITMÉTICA</h3>
+                <p class="text-[10px] text-slate-400">Cálculos matriciais, álgebra linear avançada e sistemas numéricos.</p>
             </div>
 
             <div class="folder-card">
-                <h3 class="text-orange-400 font-bold text-sm mb-2">💻 CIÊNCIA DA COMPUTAÇÃO</h3>
-                <p class="text-[9px] text-slate-500">Algoritmos Zeus, Inteligência Artificial e Redes Neurais.</p>
+                <h3 class="text-yellow-600 font-black mb-2 uppercase">⚖ DIREITO & TODAS AS LEIS</h3>
+                <p class="text-[10px] text-slate-400">Legislação Brasileira completa e tratados internacionais globais.</p>
             </div>
 
             <div class="folder-card">
-                <h3 class="text-yellow-500 font-bold text-sm mb-2">⚖ JURÍDICO MUNDIAL</h3>
-                <p class="text-[9px] text-slate-500">Acesso a todas as leis brasileiras e tratados internacionais.</p>
+                <h3 class="text-red-600 font-black mb-2 uppercase">🧪 PESQUISA DA CURA</h3>
+                <p class="text-[10px] text-slate-400">Biotecnologia, Medicina Avançada e Repositório Científico.</p>
+            </div>
+
+            <div class="folder-card">
+                <h3 class="text-cyan-400 font-black mb-2 uppercase">💻 CIÊNCIA DA COMPUTAÇÃO</h3>
+                <p class="text-[10px] text-slate-400">IA Zeus, Redes Neurais, Hardware Monstro e Programação.</p>
             </div>
 
         </div>
+
+        <footer class="mt-20 border-t border-slate-900 pt-6 text-center">
+            <p class="text-[10px] text-slate-700 uppercase italic">Protegido pelo Firewall Zeus 1.131 - Todos os direitos reservados para Felipe</p>
+        </footer>
     </div>
 
     <script>
         function unlock() {
-            const val = document.getElementById('master-key').value;
-            // Chave oficial: felipe34
-            if(val === "felipe34") {
+            const key = document.getElementById('master-key').value;
+            // A senha que você definiu: felipe34
+            if(key === "felipe34") {
                 document.getElementById('gatekeeper').classList.add('hidden');
                 document.getElementById('main-portal').classList.remove('hidden');
             } else {
-                alert("ACESSO NEGADO: CHAVE INCORRETA OU PAGAMENTO PENDENTE.");
+                alert("ACESSO NEGADO: Realize o Pix para maiconfhel23@gmail.com e envie o comprovante.");
             }
         }
     </script>
 </body>
 </html>
-
