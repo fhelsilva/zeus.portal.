@@ -1,0 +1,44 @@
+name: Zeus Omni-Deploy-System
+
+on:
+  push:
+    branches: ["main", "fhelsilva-patch-1"]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # O robô checa atualizações todo dia à meia-noite
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Zeus Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Blindagem Anti-Jekyll
+        run: touch .nojekyll # Mata o erro do X vermelho automaticamente
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Preparar Módulos (Engenharia e Saúde)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Ativar Terminal Online
+        id: deployment
+        uses: actions/deploy-pages@v4
+
