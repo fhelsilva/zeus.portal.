@@ -7,108 +7,94 @@
     <title>SALA MESTRE ZEUS - TERMINAL</title>
     <style>
         .janela-interna { display: none; position: fixed; top: 5%; left: 5%; width: 90%; height: 85%; background: #050505; border: 2px solid #1e3a8a; padding: 30px; z-index: 100; overflow-y: auto; box-shadow: 0 0 50px rgba(0,0,0,0.9); }
-        .code-block { background: #000; border-left: 3px border-blue-900; padding: 10px; font-family: 'Courier New', monospace; font-size: 12px; color: #4ade80; margin-top: 10px; }
+        .code-block { background: #000; border-left: 3px solid #1e3a8a; padding: 10px; font-family: 'Courier New', monospace; font-size: 12px; color: #4ade80; margin-top: 10px; }
     </style>
 </head>
-<body class="bg-black text-white font-mono p-6">
+<body class="bg-black text-white font-mono min-h-screen flex items-center justify-center p-4">
 
-<h1 class="text-3xl font-black text-blue-500 italic mb-2">ZEUS SYSTEM: TERMINAL MUNDIAL</h1>
-<p class="text-[10px] text-green-500 mb-10 tracking-[0.5em]">FIREWALL 1.131 • ACESSO TOTAL GARANTIDO</p>
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div onclick="abrir('eng')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-blue-400 transition-all shadow-lg">
-        <h3 class="text-blue-500 font-bold uppercase">🚀 Engenharia Mundial</h3>
-        <p class="text-[10px] text-gray-500">Motos, Naves e Estruturas.</p>
+<div id="login-box" class="max-w-xl w-full border-2 border-blue-900 bg-[#0d1117] p-8 rounded-2xl shadow-[0_0_30px_rgba(30,58,138,0.4)]">
+    <h1 class="text-3xl font-black text-blue-500 text-center italic mb-1 uppercase">Zeus Calculation System</h1>
+    <p class="text-[9px] text-green-500 text-center font-bold tracking-widest mb-6 border-b border-blue-900 pb-4">FIREWALL 1.131 • CIÊNCIA & ENGENHARIA MUNDIAL</p>
+    
+    <div class="space-y-4 text-center">
+        <input type="text" id="user" placeholder="INSIRA SEU ID" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-500">
+        <input type="password" id="pass" placeholder="INSIRA A CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-500">
+        
+        <button onclick="ativarSistema()" class="w-full bg-green-600 hover:bg-green-700 text-black font-black py-4 rounded uppercase transition-all shadow-lg active:scale-95">
+            Autenticar & Carregar Dados (5 Minutos)
+        </button>
     </div>
 
-    <div onclick="abrir('saude')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-green-400 transition-all shadow-lg">
-        <h3 class="text-green-500 font-bold uppercase">💊 Saúde & Patologia</h3>
-        <p class="text-[10px] text-gray-500">Doenças e Fármacos.</p>
+    <div class="mt-8 text-center border-t border-gray-800 pt-6">
+        <p class="text-[9px] text-gray-500 mb-4 uppercase font-bold text-center">PIX: maiconfhel23@gmail.com</p>
+        <button onclick="acessoDono()" class="text-blue-600 hover:text-blue-400 text-[10px] font-black uppercase underline tracking-tighter">Painel do Dono (Felipe)</button>
     </div>
+</div>
 
-    <div onclick="abrir('leis')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-yellow-400 transition-all shadow-lg">
-        <h3 class="text-yellow-500 font-bold uppercase">⚖️ Leis do Mundo</h3>
-        <p class="text-[10px] text-gray-500">Vade Mecum e Constituição.</p>
-    </div>
-
-    <div onclick="abrir('ciencia')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-purple-400 transition-all shadow-lg">
-        <h3 class="text-purple-500 font-bold uppercase">⚛️ Física & Álgebra</h3>
-        <p class="text-[10px] text-gray-500">Cálculos Quânticos.</p>
+<div id="painel-zeus" class="hidden w-full max-w-6xl p-6">
+    <h2 class="text-2xl font-black text-blue-400 mb-6 italic uppercase border-b border-blue-900 pb-2">Sala Mestre Zeus: Terminal Mundial</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onclick="abrir('eng')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-blue-400 transition-all">
+            <h3 class="text-blue-500 font-bold uppercase">🚀 Engenharia</h3>
+            <p class="text-[10px] text-gray-500">Motos e Naves.</p>
+        </div>
+        <div onclick="abrir('saude')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-green-400 transition-all">
+            <h3 class="text-green-500 font-bold uppercase">💊 Saúde & Patologia</h3>
+            <p class="text-[10px] text-gray-500">Doenças e Fármacos.</p>
+        </div>
+        <div onclick="abrir('leis')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-yellow-400 transition-all">
+            <h3 class="text-yellow-500 font-bold uppercase">⚖️ Leis</h3>
+            <p class="text-[10px] text-gray-500">Brasil e Internacional.</p>
+        </div>
+        <div onclick="abrir('ciencia')" class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl cursor-pointer hover:border-purple-400 transition-all">
+            <h3 class="text-purple-500 font-bold uppercase">⚛️ Ciência</h3>
+            <p class="text-[10px] text-gray-500">Física Quântica.</p>
+        </div>
     </div>
 </div>
 
 <div id="eng" class="janela-interna">
-    <h2 class="text-blue-500 font-bold text-2xl mb-6">🚀 ENGENHARIA AEROESPACIAL E MECÂNICA</h2>
-    <div class="space-y-6 text-sm text-gray-300">
-        <div>
-            <h4 class="text-blue-400 font-bold underline">Cálculo de Fuselagem em Titânio:</h4>
-            <p>Resistência térmica para reentrada atmosférica (Naves): $Q = mc\Delta T$.</p>
-        </div>
-        <div>
-            <h4 class="text-blue-400 font-bold underline">Motos de Alta Performance:</h4>
-            <p>Diagramas de motores V4, injeção eletrônica programável e mapeamento de torque para competições.</p>
-        </div>
+    <h2 class="text-blue-500 font-bold text-2xl mb-6 uppercase">🚀 Engenharia Aeroespacial</h2>
+    <div class="space-y-4 text-sm text-gray-300">
+        <p>• <b>Naves:</b> Fuselagem térmica e propulsão de alta performance.</p>
+        <p>• <b>Motos:</b> Diagramas de motores V4 e injeção eletrônica.</p>
     </div>
-    <button onclick="fechar()" class="mt-10 bg-red-900 text-white px-6 py-2 rounded font-bold uppercase">Fechar Banco de Dados</button>
+    <button onclick="fechar()" class="mt-10 bg-red-900 text-white px-6 py-2 rounded font-bold uppercase">Fechar</button>
 </div>
 
 <div id="saude" class="janela-interna">
-    <h2 class="text-green-500 font-bold text-2xl mb-6">💊 BANCO DE DADOS: SAÚDE & PATOLOGIA MUNDIAL</h2>
-    <div class="space-y-6 text-sm text-gray-300">
-        <div>
-            <h4 class="text-green-400 font-bold underline italic">Doenças Transmissíveis (Históricas e Atuais):</h4>
-            <div class="code-block">
-                • VIRAIS: HIV/AIDS, Ebola, Marburg, SARS-CoV-2, Varíola (Erradicada), Poliomielite, Influenza Aviária (H5N1).<br>
-                • BACTERIANAS: Peste Bubônica (Yersinia pestis), Tuberculose (MDR-TB), Cólera, Hanseníase, Antraz.<br>
-                • VETORES: Malária, Dengue, Zika, Chikungunya, Febre Amarela.
-            </div>
-        </div>
-        <div>
-            <h4 class="text-green-400 font-bold underline italic">Biossegurança e Farmacologia:</h4>
-            <p>• Níveis de contenção NB-1 a NB-4 para patógenos de alto risco.<br>
-            • Catálogo de Benzodiazepínicos, Neurolépticos e protocolos CID-11 para Psiquiatria.</p>
-        </div>
-    </div>
-    <button onclick="fechar()" class="mt-10 bg-red-900 text-white px-6 py-2 rounded font-bold uppercase">Fechar Banco de Dados</button>
-</div>
-
-<div id="leis" class="janela-interna">
-    <h2 class="text-yellow-500 font-bold text-2xl mb-6">⚖️ LEIS: BRASIL E DIREITO INTERNACIONAL</h2>
-    <div class="space-y-6 text-sm text-gray-300">
+    <h2 class="text-green-500 font-bold text-2xl mb-6 uppercase">💊 Saúde e Doenças Transmissíveis</h2>
+    <div class="space-y-4 text-sm text-gray-300">
         <div class="code-block">
-            CONSTITUIÇÃO FEDERAL - ART. 5: Todos são iguais perante a lei...<br>
-            CÓDIGO CIVIL: Contratos, Direitos Reais e Família.<br>
-            CÓDIGO PENAL: Tipificação de crimes e penas brasileiras.
-        </div>
-        <p>Acesso ao Vade Mecum Digital com jurisprudência atualizada de 2026.</p>
-    </div>
-    <button onclick="fechar()" class="mt-10 bg-red-900 text-white px-6 py-2 rounded font-bold uppercase">Fechar Banco de Dados</button>
-</div>
-
-<div id="ciencia" class="janela-interna">
-    <h2 class="text-purple-500 font-bold text-2xl mb-6">⚛️ FÍSICA QUÂNTICA E MATEMÁTICA AVANÇADA</h2>
-    <div class="space-y-6 text-sm text-gray-300">
-        <div>
-            <h4 class="text-purple-400 font-bold underline">Álgebra Linear Aplicada:</h4>
-            <p>Cálculo de Matrizes complexas para visão computacional do ZEUS.</p>
-        </div>
-        <div>
-            <h4 class="text-purple-400 font-bold underline">Mecânica Quântica:</h4>
-            <p>Equação de Schrödinger: $i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{r},t) = \hat{H} \Psi(\mathbf{r},t)$.</p>
+            • VIRAIS: HIV, Ebola, SARS-CoV-2, Varíola, Influenza H5N1.<br>
+            • BACTERIANAS: Peste Bubônica, Tuberculose, Cólera, Antraz.
         </div>
     </div>
-    <button onclick="fechar()" class="mt-10 bg-red-900 text-white px-6 py-2 rounded font-bold uppercase">Fechar Banco de Dados</button>
+    <button onclick="fechar()" class="mt-10 bg-red-900 text-white px-6 py-2 rounded font-bold uppercase">Fechar</button>
 </div>
 
 <script>
-    function abrir(id) {
-        fechar();
-        document.getElementById(id).style.display = 'block';
+    function ativarSistema() {
+        const u = document.getElementById('user').value;
+        const p = document.getElementById('pass').value;
+        if(u !== "" && p !== "") {
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('painel-zeus').classList.remove('hidden');
+            setTimeout(() => { alert("ACESSO EXPIRADO!"); location.reload(); }, 300000); 
+        } else { alert("Preencha os campos!"); }
     }
-    function fechar() {
-        const janelas = document.querySelectorAll('.janela-interna');
-        janelas.forEach(j => j.style.display = 'none');
+
+    function acessoDono() {
+        let senha = prompt("SENHA MESTRE ZEUS:");
+        if(senha === "adminzeus") {
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('painel-zeus').classList.remove('hidden');
+        } else { alert("ACESSO NEGADO."); }
     }
+
+    function abrir(id) { fechar(); document.getElementById(id).style.display = 'block'; }
+    function fechar() { const janelas = document.querySelectorAll('.janela-interna'); janelas.forEach(j => j.style.display = 'none'); }
 </script>
 </body>
 </html>
+
