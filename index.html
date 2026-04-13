@@ -4,99 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>ZEUS PORTAL - CONSTRUTOR UNIVERSAL</title>
+    <title>ZEUS - CONSTRUTOR UNIVERSAL</title>
+    <style>
+        .glow { text-shadow: 0 0 10px #3b82f6, 0 0 20px #1d4ed8; }
+        .panel-grid { display: none; }
+    </style>
 </head>
-<body class="bg-black text-white font-sans min-h-screen">
+<body class="bg-black text-gray-300 font-mono min-h-screen">
 
-<div id="auth-container" class="max-w-2xl mx-auto bg-[#0d1117] border-2 border-blue-900 p-10 rounded-2xl shadow-[0_0_50px_rgba(30,58,138,0.5)] mt-10">
-    <h1 class="text-5xl font-black text-blue-500 text-center mb-2 italic tracking-tighter">ZEUS SYSTEM</h1>
-    <p class="text-[10px] text-green-500 text-center mb-8 font-bold uppercase tracking-[0.3em]">Firewall 1.131 • Global & Space Intelligence</p>
-    
-    <div class="space-y-4">
-        <div class="grid grid-cols-2 gap-4">
-            <input type="text" id="new-user" placeholder="USUÁRIO" class="bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-400">
-            <input type="password" id="new-pass" placeholder="SENHA" class="bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-400">
-        </div>
+<div id="auth-container" class="max-w-xl mx-auto py-20 px-6">
+    <div class="border-2 border-blue-900 p-8 rounded-lg bg-[#0d1117] shadow-2xl">
+        <h1 class="text-4xl font-black text-blue-500 text-center glow italic mb-2">ZEUS SYSTEM</h1>
+        <p class="text-[10px] text-green-500 text-center font-bold tracking-widest mb-8">FIREWALL 1.131 • ENGENHARIA & CIÊNCIA TOTAL</p>
         
-        <label class="text-blue-400 text-[10px] block font-bold uppercase text-center mt-4">Módulo de Criação e Estudo:</label>
-        <select id="user-area" class="w-full bg-black border border-blue-900 p-4 text-white rounded text-center font-bold appearance-none cursor-pointer">
-            <optgroup label="ENGENHARIA UNIVERSAL (DENTRO E FORA DO MUNDO)">
-                <option value="Construcao">Construção de Qualquer Coisa (Motos a Naves)</option>
-                <option value="Aeroespacial">Engenharia de Defesa e Exploração Espacial</option>
-                <option value="Civil">Engenharia Mundial e Infraestrutura</option>
-            </optgroup>
-            <optgroup label="CIÊNCIA ABSOLUTA">
-                <option value="Quantica">Física Quântica e Pesquisas Globais</option>
-                <option value="Algebra">Álgebra Linear e Geometria Analítica</option>
-                <option value="Computacao">Ciência da Computação (Todos os Códigos do Mundo)</option>
-            </optgroup>
-            <optgroup label="SAÚDE E LEIS MUNDIAIS">
-                <option value="Saude">Medicina, Farmácia e Doenças Psiquiátricas</option>
-                <option value="Direito">Todas as Leis do Brasil e do Mundo</option>
-            </optgroup>
-        </select>
+        <div class="space-y-4">
+            <input type="text" id="new-user" placeholder="ID DE USUÁRIO" class="w-full bg-black border border-blue-900 p-4 text-white rounded outline-none focus:border-blue-400 text-center">
+            <input type="password" id="new-pass" placeholder="CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-4 text-white rounded outline-none focus:border-blue-400 text-center">
+            
+            <select id="user-area" class="w-full bg-black border border-blue-900 p-4 text-blue-400 rounded font-bold text-center appearance-none">
+                <option value="all">SALA MESTRE: TODAS AS ÁREAS</option>
+                <option value="eng">ENGENHARIA (MOTOS A NAVES)</option>
+                <option value="saude">SAÚDE (REMÉDIOS E PSIQUIATRIA)</option>
+                <option value="leis">LEIS (BRASIL E MUNDO)</option>
+                <option value="fisica">FÍSICA QUÂNTICA & ÁLGEBRA</option>
+            </select>
 
-        <button onclick="criarConta()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded uppercase transition-all shadow-lg text-lg">
-            Acessar Inteligência (5 Minutos)
-        </button>
-    </div>
+            <button onclick="criarConta()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded shadow-lg transition-transform active:scale-95">
+                AUTENTICAR E CARREGAR DADOS
+            </button>
+        </div>
 
-    <div class="mt-10 pt-6 border-t border-gray-800 text-center">
-        <p class="text-[10px] text-gray-500 mb-4 font-bold uppercase">PIX PARA ACESSO TOTAL: maiconfhel23@gmail.com</p>
-        <button onclick="acessoAdm()" class="text-gray-600 hover:text-blue-500 text-[11px] font-black uppercase underline tracking-widest">
-            Painel do Dono (Felipe)
-        </button>
+        <div class="mt-10 border-t border-gray-800 pt-6 text-center">
+            <button onclick="acessoAdm()" class="text-gray-600 hover:text-blue-500 text-[10px] font-bold uppercase underline">Acesso do Dono (Felipe)</button>
+        </div>
     </div>
 </div>
 
-<div id="main-panel" class="hidden p-10 animate-pulse">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-black text-blue-400 border-b-2 border-blue-900 pb-4 mb-8 uppercase italic">Sistema Zeus: Construindo o Impossível</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-[#0d1117] p-8 border border-blue-900 rounded-xl">
-                <h3 class="font-bold text-green-500 mb-4 uppercase">Status do Firewall</h3>
-                <p class="text-xs text-gray-400 italic">Proteção 1.131 ativa em todos os modelos mundiais.</p>
-            </div>
-            <div class="bg-[#0d1117] p-8 border border-blue-900 rounded-xl">
-                <h3 class="font-bold text-blue-500 mb-4 uppercase">Base de Dados</h3>
-                <p class="text-xs text-gray-400 italic">Engenharia de naves e motos pronta para processamento.</p>
-            </div>
-            <div class="bg-[#0d1117] p-8 border border-blue-900 rounded-xl">
-                <h3 class="font-bold text-purple-500 mb-4 uppercase">Pesquisa de Saúde</h3>
-                <p class="text-xs text-gray-400 italic">Códigos de remédios e doenças carregados.</p>
-            </div>
+<div id="main-panel" class="hidden p-6 lg:p-12">
+    <header class="flex justify-between items-center border-b border-blue-900 pb-4 mb-10">
+        <div>
+            <h2 class="text-2xl font-black text-blue-500 italic">ZEUS DASHBOARD</h2>
+            <p class="text-[10px] text-green-500">CONSTRUTOR UNIVERSAL ATIVO</p>
+        </div>
+        <button onclick="location.reload()" class="text-xs bg-red-900/30 text-red-500 px-4 py-2 rounded border border-red-900">SAIR</button>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
+            <h3 class="text-blue-400 font-black mb-4 uppercase">🚀 Engenharia Aeroespacial & Motos</h3>
+            <ul class="text-[11px] space-y-2 text-gray-400">
+                <li>• Dinâmica de Fluidos para Naves</li>
+                <li>• Motores de Alta Performance</li>
+                <li>• Estruturas de Titânio e Carbono</li>
+                <li>• Design de Veículos Extraterrestres</li>
+            </ul>
+        </div>
+
+        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
+            <h3 class="text-green-400 font-black mb-4 uppercase">💊 Saúde & Farmacologia Mundial</h3>
+            <ul class="text-[11px] space-y-2 text-gray-400">
+                <li>• Catálogo Global de Medicamentos</li>
+                <li>• CID-11: Doenças Psiquiátricas</li>
+                <li>• Protocolos de Bioengenharia</li>
+                <li>• Neurociência Avançada</li>
+            </ul>
+        </div>
+
+        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
+            <h3 class="text-yellow-400 font-black mb-4 uppercase">⚖️ Leis do Brasil & Mundo</h3>
+            <ul class="text-[11px] space-y-2 text-gray-400">
+                <li>• Vade Mecum Digital Completo</li>
+                <li>• Direito Internacional e Espacial</li>
+                <li>• Constituição Federal Atualizada</li>
+                <li>• Jurisprudência Mundial</li>
+            </ul>
+        </div>
+
+        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
+            <h3 class="text-purple-400 font-black mb-4 uppercase">⚛️ Física & Álgebra Linear</h3>
+            <ul class="text-[11px] space-y-2 text-gray-400">
+                <li>• Mecânica Quântica Aplicada</li>
+                <li>• Matrizes e Vetores Complexos</li>
+                <li>• Pesquisas Científicas Globais</li>
+                <li>• Códigos de Programação Zeus</li>
+            </ul>
         </div>
     </div>
 </div>
 
 <script>
     function criarConta() {
-        const user = document.getElementById('new-user').value;
-        const pass = document.getElementById('new-pass').value;
-        const area = document.getElementById('user-area').options[document.getElementById('user-area').selectedIndex].text;
-
-        if(user !== "" && pass !== "") {
-            alert("AUTENTICADO! Bem-vindo à Inteligência " + area + ".\nProteção Firewall 1.131 Ativa.");
+        const u = document.getElementById('new-user').value;
+        const p = document.getElementById('new-pass').value;
+        if(u && p) {
+            alert("SISTEMA ZEUS: Carregando banco de dados universal...");
             document.getElementById('auth-container').classList.add('hidden');
             document.getElementById('main-panel').classList.remove('hidden');
-            
-            setTimeout(() => {
-                alert("TEMPO ESGOTADO! Para continuar construindo naves e acessando as leis do mundo, realize o PIX.");
-                location.reload(); 
-            }, 300000); 
-        } else {
-            alert("Erro de Autenticação: Preencha todos os campos.");
-        }
+            setTimeout(() => { alert("Degustação de 5 min encerrada."); location.reload(); }, 300000);
+        } else { alert("Insira usuário e senha."); }
     }
 
     function acessoAdm() {
-        let senha = prompt("SENHA MESTRE ZEUS:");
-        if(senha === "adminzeus") {
+        if(prompt("SENHA MESTRE:") === "adminzeus") {
             document.getElementById('auth-container').classList.add('hidden');
             document.getElementById('main-panel').classList.remove('hidden');
-        } else { alert("ACESSO NEGADO."); }
+        }
     }
 </script>
 </body>
 </html>
-
