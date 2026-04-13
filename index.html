@@ -1,42 +1,59 @@
-<div id="lock-screen" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
-    <div class="max-w-md w-full bg-[#0d1117] border border-red-600 p-8 rounded-xl text-center shadow-2xl">
-        <h2 class="text-2xl font-bold text-white mb-4">DEGUSTAÇÃO ENCERRADA</h2>
-        <p class="text-gray-400 mb-6">Para continuar acessando os cálculos de Engenharia e IA, realize o pagamento.</p>
+<div id="auth-container" class="max-w-md mx-auto bg-[#0d1117] border border-blue-900 p-8 rounded-xl shadow-2xl mt-10">
+    <h1 class="text-2xl font-black text-white text-center mb-2">ZEUS PORTAL</h1>
+    <p class="text-[10px] text-blue-500 text-center mb-6">SISTEMA AUTOMATIZADO DE ENGENHARIA E CIÊNCIA</p>
+    
+    <div class="space-y-4">
+        <input type="text" id="new-user" placeholder="CRIE SEU NOME DE USUÁRIO" class="w-full bg-black border border-blue-900 p-3 text-white text-center rounded">
+        <input type="password" id="new-pass" placeholder="CRIE SUA SENHA" class="w-full bg-black border border-blue-900 p-3 text-white text-center rounded">
         
-        <div class="bg-black p-4 mb-6 rounded border border-blue-900">
-            <span class="text-green-500 font-bold">VALOR: R$ 150,00</span><br>
-            <span class="text-white text-xs">PIX: maiconfhel123@gmail.com</span>
-        </div>
+        <label class="text-blue-400 text-[10px] block font-bold uppercase text-center">Selecione sua Área de Trabalho:</label>
+        <select id="user-area" class="w-full bg-black border border-blue-900 p-3 text-white rounded">
+            <option value="Engenharia">Engenharia Civil</option>
+            <option value="Calculo">Cálculo I e II</option>
+            <option value="Fisica">Física Quântica</option>
+            <option value="Computacao">Ciência da Computação (Hardware/IA)</option>
+        </select>
 
-        <input type="password" id="client-key" placeholder="SUA CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-3 text-white text-center mb-4 rounded">
-        
-        <button onclick="liberarTotal()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded mb-4">
-            LIBERAR MEU ACESSO
+        <button onclick="criarConta()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded uppercase transition-all">
+            Iniciar 5 Minutos de Degustação
         </button>
+    </div>
 
-        <button onclick="acessoAdm()" class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 rounded text-xs">
-            ENTRAR COMO ADMINISTRADOR (FELIPE)
+    <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+        <p class="text-[9px] text-gray-500 mb-4">PIX PARA LIBERAÇÃO PERMANENTE: maiconfhel23@gmail.com</p>
+        <button onclick="acessoAdm()" class="text-gray-600 hover:text-blue-400 text-[10px] font-bold uppercase underline">
+            Entrar como Administrador (Felipe)
         </button>
     </div>
 </div>
 
 <script>
-    // Inicia o contador de 5 minutos assim que o site abre
-    setTimeout(function() {
-        document.getElementById('lock-screen').classList.remove('hidden');
-    }, 300000); // 300.000 milissegundos = 5 minutos
+    // Sistema de memória local para a sessão
+    function criarConta() {
+        const user = document.getElementById('new-user').value;
+        const pass = document.getElementById('new-pass').value;
+        const area = document.getElementById('user-area').value;
 
-    function liberarTotal() {
-        if(document.getElementById('client-key').value === "felipe34") {
-            document.getElementById('lock-screen').classList.add('hidden');
-        } else { alert("Chave inválida. Envie o comprovante do Pix."); }
+        if(user && pass) {
+            alert("Conta criada para " + user + "! Sua área de " + area + " está liberada por 5 minutos.");
+            document.getElementById('auth-container').classList.add('hidden');
+            
+            // Inicia o cronômetro de 5 minutos
+            setTimeout(() => {
+                alert("Sua degustação expirou! Realize o PIX de R$ 150,00 para liberar seu usuário permanentemente.");
+                location.reload(); // Tranca tudo e volta pro início
+            }, 300000); 
+        } else {
+            alert("Por favor, preencha todos os campos para criar seu acesso.");
+        }
     }
 
     function acessoAdm() {
-        let senha = prompt("SENHA MESTRE DO DONO:");
+        let senha = prompt("ACESSO MESTRE DO FELIPE:");
         if(senha === "adminzeus") {
-            document.getElementById('lock-screen').classList.add('hidden');
-        } else { alert("Acesso Negado."); }
+            document.getElementById('auth-container').classList.add('hidden');
+            // Aqui abre a interface completa com partículas
+        }
     }
 </script>
 
