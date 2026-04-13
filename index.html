@@ -2,37 +2,61 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>ZEUS PORTAL - ENGENHARIA & CIÊNCIA</title>
+    <title>ZEUS PORTAL - SISTEMA UNIVERSAL</title>
 </head>
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white font-sans min-h-screen">
 
-<div id="auth-container" class="max-w-md mx-auto bg-[#0d1117] border border-blue-900 p-8 rounded-xl shadow-2xl mt-10">
-    <h1 class="text-3xl font-black text-blue-500 text-center mb-2">ZEUS PORTAL</h1>
-    <p class="text-[10px] text-green-500 text-center mb-6 font-bold uppercase">Sistema Automatizado de Ciência</p>
+<div id="auth-container" class="max-w-xl mx-auto bg-[#0d1117] border border-blue-900 p-8 rounded-xl shadow-2xl mt-10">
+    <h1 class="text-4xl font-black text-blue-500 text-center mb-2 italic">ZEUS SYSTEM</h1>
+    <p class="text-[10px] text-green-500 text-center mb-6 font-bold uppercase tracking-[0.2em]">Firewall 1.131 Multi-Model Active</p>
     
     <div class="space-y-4">
-        <input type="text" id="new-user" placeholder="CRIE SEU NOME DE USUÁRIO" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded focus:border-blue-500 outline-none">
-        <input type="password" id="new-pass" placeholder="CRIE SUA SENHA" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded focus:border-blue-500 outline-none">
+        <input type="text" id="new-user" placeholder="USUÁRIO" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-400">
+        <input type="password" id="new-pass" placeholder="SENHA" class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded outline-none focus:border-blue-400">
         
-        <label class="text-blue-400 text-[10px] block font-bold uppercase text-center mt-4">Área de Trabalho ou Estudo:</label>
-        <select id="user-area" class="w-full bg-black border border-blue-900 p-3 text-white rounded cursor-pointer">
-            <option value="Engenharia">Engenharia Civil (Felipe)</option>
-            <option value="Computacao">Ciência da Computação & IA</option>
-            <option value="Calculo">Cálculo I e II</option>
-            <option value="Fisica">Física Quântica</option>
+        <label class="text-blue-400 text-[10px] block font-bold uppercase text-center mt-4">Selecione sua Sala de Trabalho:</label>
+        <select id="user-area" class="w-full bg-black border border-blue-900 p-3 text-white rounded text-center">
+            <optgroup label="ENGENHARIA & ESPAÇO">
+                <option value="Aeroespacial">Engenharia Aeroespacial (Naves e Motos)</option>
+                <option value="Civil">Engenharia Civil e Estrutural</option>
+            </optgroup>
+            <optgroup label="CIÊNCIA & MATEMÁTICA">
+                <option value="Quantica">Física Quântica e Pesquisas Mundiais</option>
+                <option value="Algebra">Álgebra Linear e Avançada</option>
+                <option value="Computacao">Ciência da Computação (Todos os Códigos)</option>
+            </optgroup>
+            <optgroup label="SAÚDE & MEDICINA">
+                <option value="Saude">Farmácia e Remédios do Mundo</option>
+                <option value="Psiquiatria">Doenças Psiquiátricas e Mentais</option>
+            </optgroup>
+            <optgroup label="LEIS & DIREITO">
+                <option value="LeisBrasil">Leis do Brasil (Vade Mecum)</option>
+                <option value="LeisMundo">Direito Internacional e Leis do Mundo</option>
+            </optgroup>
         </select>
 
-        <button onclick="criarConta()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded uppercase transition-all shadow-lg active:scale-95">
-            Iniciar 5 Minutos de Degustação
+        <button onclick="criarConta()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded uppercase transition-all shadow-lg">
+            Acessar Degustação (5 Minutos)
         </button>
     </div>
 
     <div class="mt-8 pt-6 border-t border-gray-800 text-center">
-        <p class="text-[10px] text-gray-500 mb-4 font-bold">PIX PARA LIBERAÇÃO: maiconfhel23@gmail.com</p>
+        <p class="text-[9px] text-gray-500 mb-4 font-bold uppercase">PIX LIBERAÇÃO: maiconfhel23@gmail.com</p>
         <button onclick="acessoAdm()" class="text-gray-600 hover:text-blue-500 text-[10px] font-bold uppercase underline tracking-widest">
-            Painel do Administrador
+            Entrar como Administrador (Felipe)
         </button>
+    </div>
+</div>
+
+<div id="main-panel" class="hidden p-10">
+    <h2 class="text-2xl font-bold text-blue-400 border-b border-blue-900 pb-2 mb-6">SALA DE TRABALHO LIBERADA</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-lg">
+            <h3 class="font-bold mb-2">PROJETO ZEUS</h3>
+            <p class="text-sm text-gray-400">Banco de dados universal carregado com Firewall 1.131.</p>
+        </div>
     </div>
 </div>
 
@@ -40,32 +64,29 @@
     function criarConta() {
         const user = document.getElementById('new-user').value;
         const pass = document.getElementById('new-pass').value;
-        const area = document.getElementById('user-area').value;
+        const area = document.getElementById('user-area').options[document.getElementById('user-area').selectedIndex].text;
 
         if(user !== "" && pass !== "") {
-            alert("Acesso Criado! Você tem 5 minutos na área de " + area);
-            document.getElementById('auth-container').style.display = 'none';
+            alert("CADASTRO ATIVO! Você está na sala: " + area + "\nTempo: 5 Minutos.");
+            document.getElementById('auth-container').classList.add('hidden');
+            document.getElementById('main-panel').classList.remove('hidden');
             
-            // Inicia cronômetro de 5 minutos (300000ms)
             setTimeout(() => {
-                alert("DEGUSTAÇÃO EXPIRADA! Realize o PIX de R$ 150 para liberar seu login permanente.");
+                alert("TESTE EXPIRADO! Realize o PIX de R$ 150 para acesso permanente a todos os códigos.");
                 location.reload(); 
             }, 300000); 
         } else {
-            alert("Por favor, preencha o Nome e a Senha para criar seu acesso.");
+            alert("Preencha o Nome e Senha para autenticar.");
         }
     }
 
     function acessoAdm() {
-        let senha = prompt("SENHA MESTRE DO FELIPE:");
+        let senha = prompt("ACESSO MESTRE:");
         if(senha === "adminzeus") {
-            alert("Bem-vindo, Felipe! Acesso Total Liberado.");
-            document.getElementById('auth-container').style.display = 'none';
-        } else {
-            alert("Senha Incorreta.");
-        }
+            document.getElementById('auth-container').classList.add('hidden');
+            document.getElementById('main-panel').classList.remove('hidden');
+        } else { alert("ACESSO NEGADO."); }
     }
 </script>
 </body>
 </html>
-
