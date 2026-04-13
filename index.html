@@ -3,103 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEUS // SISTEMA OPERACIONAL DE ESTUDOS</title>
+    <title>ZEUS // GLOBAL RESEARCH & CALCULATION</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #020617; color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .desktop-icon { cursor: pointer; transition: 0.3s; text-align: center; padding: 10px; border-radius: 8px; }
-        .desktop-icon:hover { background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; }
-        .window { background: #0f172a; border: 1px solid #1e40af; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        body { background: #010409; color: #c9d1d9; font-family: 'Courier New', monospace; }
+        .folder-card { background: #0d1117; border: 1px solid #30363d; padding: 20px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .folder-card:hover { border-color: #58a6ff; background: #161b22; }
+        .pix-header { border-bottom: 2px solid #238636; background: rgba(35, 134, 54, 0.1); }
         .hidden { display: none; }
-        .pix-highlight { color: #22c55e; font-weight: bold; border: 1px solid #22c55e; padding: 5px; border-radius: 4px; }
     </style>
 </head>
-<body class="p-4">
+<body class="p-4 md:p-8">
 
-    <div id="login-screen" class="max-w-md mx-auto mt-20 p-8 bg-slate-900 border border-blue-900 rounded-xl shadow-2xl">
-        <h1 class="text-3xl font-black text-center text-blue-500 mb-2 italic">ZEUS OS</h1>
-        <p class="text-[10px] text-center text-slate-400 mb-8 uppercase tracking-[0.3em]">Firewall 1.131 - Active Security</p>
-        
-        <div class="bg-black/50 p-4 rounded-lg border border-slate-800 mb-6">
-            <p class="text-xs text-slate-300 mb-2 text-center">Para liberar seu ambiente de trabalho:</p>
-            <div class="text-center bg-white p-2 rounded mb-2 w-32 mx-auto">
-                <div class="w-full h-28 bg-slate-200 flex items-center justify-center text-black text-[8px]">QR CODE PIX</div>
-            </div>
-            <p class="text-[11px] text-center">PIX (E-mail): <span class="pix-highlight">maiconfhel23@gmail.com</span></p>
-            <p class="text-[9px] text-slate-500 mt-2 text-center uppercase italic">Envie o comprovante para criar sua chave</p>
+    <div id="gatekeeper" class="max-w-xl mx-auto mt-10">
+        <div class="pix-header p-6 rounded-t-lg text-center">
+            <h1 class="text-2xl font-bold text-white mb-2 uppercase">Zeus Calculation System</h1>
+            <p class="text-xs text-green-500 font-bold">PAGAMENTO VIA PIX: maiconfhel23@gmail.com</p>
         </div>
-
-        <input type="password" id="pass-key" placeholder="CHAVE DE ACESSO" 
-               class="w-full bg-black border border-blue-900 p-3 text-white text-center rounded mb-4 focus:border-green-500 outline-none transition">
-        
-        <button onclick="validaAcesso()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded transition uppercase text-xs tracking-widest">
-            Entrar no Ambiente
-        </button>
+        <div class="bg-[#0d1117] p-8 border border-[#30363d] rounded-b-lg shadow-2xl">
+            <p class="text-[10px] text-slate-400 mb-6 text-center italic">"Cálculos de Álgebra, Física Quântica e Engenharias Mundiais Protegidos pelo Firewall 1.131"</p>
+            <input type="password" id="master-key" placeholder="INSIRA A CHAVE DE ACESSO" 
+                   class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded mb-6 outline-none focus:border-blue-500">
+            <button onclick="unlock()" class="w-full bg-[#238636] hover:bg-[#2ea043] text-white font-bold py-4 rounded transition text-xs tracking-[0.2em]">
+                AUTENTICAR & CARREGAR DADOS
+            </button>
+        </div>
     </div>
 
-    <div id="desktop" class="hidden">
-        <header class="flex justify-between items-center mb-10 border-b border-blue-900 pb-4">
+    <div id="main-portal" class="hidden">
+        <header class="flex flex-col md:flex-row justify-between items-end mb-10 border-b border-[#30363d] pb-6">
             <div>
-                <h1 class="text-2xl font-black italic">ZEUS <span class="text-blue-500">WORKSTATION</span></h1>
-                <p class="text-[10px] text-slate-500 uppercase">Usuário: Felipe.30 | Status: Online</p>
+                <h1 class="text-4xl font-black text-white">ZEUS <span class="text-blue-500">GLOBAL</span></h1>
+                <p class="text-[10px] tracking-widest text-slate-500">ENGINEERING, QUANTUM PHYSICS & ALGEBRA CORE</p>
             </div>
-            <div class="text-right text-[10px] text-green-500 font-bold">SISTEMA CRIPTOGRAFADO</div>
+            <div class="text-right mt-4 md:mt-0">
+                <p class="text-[10px] text-blue-400">STATUS: SISTEMA OPERACIONAL</p>
+                <p class="text-[10px] text-slate-500 uppercase">Local: São Paulo Hub</p>
+            </div>
         </header>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="desktop-icon" onclick="alert('Abrindo documentos de Engenharia...')">
-                <div class="text-4xl mb-2">📂</div>
-                <div class="text-[11px] font-bold uppercase">Engenharia<br>(Civil/Geral)</div>
+            <div class="folder-card" onclick="alert('Carregando: Matrizes, Espaços Vetoriais e Transformações...')">
+                <h3 class="text-blue-400 font-bold text-sm mb-2">∑ ÁLGEBRA LINEAR</h3>
+                <p class="text-[9px] text-slate-500">Cálculos de determinantes, autovetores e sistemas lineares complexos.</p>
             </div>
 
-            <div class="desktop-icon">
-                <div class="text-4xl mb-2">📂</div>
-                <div class="text-[11px] font-bold uppercase">Física Quântica</div>
+            <div class="folder-card">
+                <h3 class="text-purple-400 font-bold text-sm mb-2">⚛ FÍSICA QUÂNTICA</h3>
+                <p class="text-[9px] text-slate-500">Equações de Schrödinger, Mecânica Matricial e Pesquisa de Partículas.</p>
             </div>
 
-            <div class="desktop-icon">
-                <div class="text-4xl mb-2">📂</div>
-                <div class="text-[11px] font-bold uppercase">Álgebra Linear</div>
+            <div class="folder-card">
+                <h3 class="text-green-400 font-bold text-sm mb-2">🏗 ENGENHARIA GLOBAL</h3>
+                <p class="text-[9px] text-slate-500">Civil (Vigas/Cálculo I), Mecânica, Elétrica e Aeronáutica.</p>
             </div>
 
-            <div class="desktop-icon">
-                <div class="text-4xl mb-2">📂</div>
-                <div class="text-[11px] font-bold uppercase">Aritmética</div>
+            <div class="folder-card border-l-4 border-red-500">
+                <h3 class="text-red-400 font-bold text-sm mb-2">🧪 PESQUISA CIENTÍFICA (CURA)</h3>
+                <p class="text-[9px] text-slate-500">Base de dados mundial para pesquisas de biotecnologia e curas.</p>
             </div>
 
-            <div class="desktop-icon">
-                <div class="text-4xl mb-2">📂</div>
-                <div class="text-[11px] font-bold uppercase">Ciência da<br>Computação</div>
+            <div class="folder-card">
+                <h3 class="text-orange-400 font-bold text-sm mb-2">💻 CIÊNCIA DA COMPUTAÇÃO</h3>
+                <p class="text-[9px] text-slate-500">Algoritmos Zeus, Inteligência Artificial e Redes Neurais.</p>
             </div>
 
-            <div class="desktop-icon">
-                <div class="text-4xl mb-2">🧪</div>
-                <div class="text-[11px] font-bold uppercase text-blue-400">Pesquisa de<br>Cura (Bio-Ciência)</div>
+            <div class="folder-card">
+                <h3 class="text-yellow-500 font-bold text-sm mb-2">⚖ JURÍDICO MUNDIAL</h3>
+                <p class="text-[9px] text-slate-500">Acesso a todas as leis brasileiras e tratados internacionais.</p>
             </div>
 
-        </div>
-
-        <div class="fixed bottom-0 left-0 w-full bg-slate-900 border-t border-blue-900 p-2 flex justify-center gap-6">
-            <span class="text-[10px] text-slate-500">SÃO PAULO HUB</span>
-            <span class="text-[10px] text-slate-500">FIREWALL 1.131 V. FINAL</span>
         </div>
     </div>
 
     <script>
-        function validaAcesso() {
-            const senha = document.getElementById('pass-key').value;
-            // A senha master continua sendo felipe34, mas você pode passar outras para seus clientes
-            if(senha === "felipe34" || senha === "zeus2026") {
-                document.getElementById('login-screen').classList.add('hidden');
-                document.getElementById('desktop').classList.remove('hidden');
+        function unlock() {
+            const val = document.getElementById('master-key').value;
+            // Chave oficial: felipe34
+            if(val === "felipe34") {
+                document.getElementById('gatekeeper').classList.add('hidden');
+                document.getElementById('main-portal').classList.remove('hidden');
             } else {
-                alert("CHAVE INCORRETA. REALIZE O PAGAMENTO VIA PIX PARA RECEBER SUA CHAVE.");
+                alert("ACESSO NEGADO: CHAVE INCORRETA OU PAGAMENTO PENDENTE.");
             }
         }
-
-        // Bloqueio de segurança contra curiosos
-        document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
 </html>
+
