@@ -1,33 +1,42 @@
-<div id="login-box" class="max-w-xl mx-auto mt-10 p-8 border border-blue-900 bg-[#0d1117] rounded-xl shadow-2xl relative z-2">
-    <h1 class="text-3xl font-black text-white text-center">ZEUS SYSTEM</h1>
-    <p class="text-[10px] text-green-500 text-center font-bold mb-6">PIX: maiconfhel23@gmail.com</p>
+<div id="lock-screen" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-[#0d1117] border border-red-600 p-8 rounded-xl text-center shadow-2xl">
+        <h2 class="text-2xl font-bold text-white mb-4">DEGUSTAÇÃO ENCERRADA</h2>
+        <p class="text-gray-400 mb-6">Para continuar acessando os cálculos de Engenharia e IA, realize o pagamento.</p>
+        
+        <div class="bg-black p-4 mb-6 rounded border border-blue-900">
+            <span class="text-green-500 font-bold">VALOR: R$ 150,00</span><br>
+            <span class="text-white text-xs">PIX: maiconfhel123@gmail.com</span>
+        </div>
 
-    <input type="password" id="entry-key" placeholder="DIGITE A CHAVE" class="w-full bg-black border border-blue-900 p-4 text-white text-center mb-4 rounded">
-    
-    <button onclick="autenticar()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded uppercase mb-4">
-        AUTENTICAR & CARREGAR DADOS
-    </button>
+        <input type="password" id="client-key" placeholder="SUA CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-3 text-white text-center mb-4 rounded">
+        
+        <button onclick="liberarTotal()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded mb-4">
+            LIBERAR MEU ACESSO
+        </button>
 
-    <button onclick="acessoAdm()" class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 rounded uppercase text-sm">
-        ENTRAR COMO ADMINISTRADOR
-    </button>
+        <button onclick="acessoAdm()" class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 rounded text-xs">
+            ENTRAR COMO ADMINISTRADOR (FELIPE)
+        </button>
+    </div>
 </div>
 
 <script>
-    // Seus arquivos de Engenharia e Cálculo aparecem aqui depois do login
-    function acessoAdm() {
-        let senha = prompt("SENHA MESTRE DO FELIPE:");
-        if(senha === "adminzeus") {
-            document.getElementById('login-box').classList.add('hidden');
-            document.getElementById('main-panel').classList.remove('hidden');
-        } else { alert("ACESSO NEGADO"); }
+    // Inicia o contador de 5 minutos assim que o site abre
+    setTimeout(function() {
+        document.getElementById('lock-screen').classList.remove('hidden');
+    }, 300000); // 300.000 milissegundos = 5 minutos
+
+    function liberarTotal() {
+        if(document.getElementById('client-key').value === "felipe34") {
+            document.getElementById('lock-screen').classList.add('hidden');
+        } else { alert("Chave inválida. Envie o comprovante do Pix."); }
     }
 
-    function autenticar() {
-        if(document.getElementById('entry-key').value === "felipe34") {
-            document.getElementById('login-box').classList.add('hidden');
-            document.getElementById('main-panel').classList.remove('hidden');
-        } else { alert("CHAVE INVÁLIDA"); }
+    function acessoAdm() {
+        let senha = prompt("SENHA MESTRE DO DONO:");
+        if(senha === "adminzeus") {
+            document.getElementById('lock-screen').classList.add('hidden');
+        } else { alert("Acesso Negado."); }
     }
 </script>
 
