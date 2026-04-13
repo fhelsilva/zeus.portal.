@@ -2,114 +2,70 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>ZEUS - CONSTRUTOR UNIVERSAL</title>
-    <style>
-        .glow { text-shadow: 0 0 10px #3b82f6, 0 0 20px #1d4ed8; }
-        .panel-grid { display: none; }
-    </style>
 </head>
-<body class="bg-black text-gray-300 font-mono min-h-screen">
+<body class="bg-black text-white font-mono min-h-screen flex items-center justify-center p-6">
 
-<div id="auth-container" class="max-w-xl mx-auto py-20 px-6">
-    <div class="border-2 border-blue-900 p-8 rounded-lg bg-[#0d1117] shadow-2xl">
-        <h1 class="text-4xl font-black text-blue-500 text-center glow italic mb-2">ZEUS SYSTEM</h1>
-        <p class="text-[10px] text-green-500 text-center font-bold tracking-widest mb-8">FIREWALL 1.131 • ENGENHARIA & CIÊNCIA TOTAL</p>
+<div id="login-box" class="max-w-xl w-full border-2 border-blue-900 bg-[#0d1117] p-10 rounded-2xl shadow-2xl">
+    <h1 class="text-4xl font-black text-blue-500 text-center italic mb-2">ZEUS SYSTEM</h1>
+    <p class="text-[10px] text-green-500 text-center font-bold tracking-[0.3em] mb-8">FIREWALL 1.131 ACTIVE</p>
+    
+    <div class="space-y-4">
+        <input type="text" id="user" placeholder="USUÁRIO" class="w-full bg-black border border-blue-900 p-4 text-center rounded outline-none focus:border-blue-400">
+        <input type="password" id="pass" placeholder="CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-4 text-center rounded outline-none focus:border-blue-400">
         
-        <div class="space-y-4">
-            <input type="text" id="new-user" placeholder="ID DE USUÁRIO" class="w-full bg-black border border-blue-900 p-4 text-white rounded outline-none focus:border-blue-400 text-center">
-            <input type="password" id="new-pass" placeholder="CHAVE DE ACESSO" class="w-full bg-black border border-blue-900 p-4 text-white rounded outline-none focus:border-blue-400 text-center">
-            
-            <select id="user-area" class="w-full bg-black border border-blue-900 p-4 text-blue-400 rounded font-bold text-center appearance-none">
-                <option value="all">SALA MESTRE: TODAS AS ÁREAS</option>
-                <option value="eng">ENGENHARIA (MOTOS A NAVES)</option>
-                <option value="saude">SAÚDE (REMÉDIOS E PSIQUIATRIA)</option>
-                <option value="leis">LEIS (BRASIL E MUNDO)</option>
-                <option value="fisica">FÍSICA QUÂNTICA & ÁLGEBRA</option>
-            </select>
+        <button onclick="entrar()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded uppercase shadow-lg">
+            Autenticar e Carregar Dados
+        </button>
+    </div>
 
-            <button onclick="criarConta()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded shadow-lg transition-transform active:scale-95">
-                AUTENTICAR E CARREGAR DADOS
-            </button>
-        </div>
-
-        <div class="mt-10 border-t border-gray-800 pt-6 text-center">
-            <button onclick="acessoAdm()" class="text-gray-600 hover:text-blue-500 text-[10px] font-bold uppercase underline">Acesso do Dono (Felipe)</button>
-        </div>
+    <div class="mt-8 text-center border-t border-gray-800 pt-6">
+        <button onclick="adm()" class="text-gray-600 hover:text-blue-500 text-[10px] font-bold underline">ACESSO DO DONO (FELIPE)</button>
     </div>
 </div>
 
-<div id="main-panel" class="hidden p-6 lg:p-12">
-    <header class="flex justify-between items-center border-b border-blue-900 pb-4 mb-10">
-        <div>
-            <h2 class="text-2xl font-black text-blue-500 italic">ZEUS DASHBOARD</h2>
-            <p class="text-[10px] text-green-500">CONSTRUTOR UNIVERSAL ATIVO</p>
+<div id="painel" class="hidden w-full max-w-6xl animate-pulse">
+    <h2 class="text-3xl font-black text-blue-400 mb-8 border-b border-blue-900 pb-4 italic">SALA MESTRE: CONSTRUINDO O IMPOSSÍVEL</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
+            <h3 class="text-blue-500 font-bold mb-2">🚀 ENGENHARIA</h3>
+            <p class="text-[11px] text-gray-400 italic">Motos, Naves e Estruturas Aeroespaciais.</p>
         </div>
-        <button onclick="location.reload()" class="text-xs bg-red-900/30 text-red-500 px-4 py-2 rounded border border-red-900">SAIR</button>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
-            <h3 class="text-blue-400 font-black mb-4 uppercase">🚀 Engenharia Aeroespacial & Motos</h3>
-            <ul class="text-[11px] space-y-2 text-gray-400">
-                <li>• Dinâmica de Fluidos para Naves</li>
-                <li>• Motores de Alta Performance</li>
-                <li>• Estruturas de Titânio e Carbono</li>
-                <li>• Design de Veículos Extraterrestres</li>
-            </ul>
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
+            <h3 class="text-green-500 font-bold mb-2">💊 SAÚDE</h3>
+            <p class="text-[11px] text-gray-400 italic">Remédios e Doenças Psiquiátricas Mundiais.</p>
         </div>
-
-        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
-            <h3 class="text-green-400 font-black mb-4 uppercase">💊 Saúde & Farmacologia Mundial</h3>
-            <ul class="text-[11px] space-y-2 text-gray-400">
-                <li>• Catálogo Global de Medicamentos</li>
-                <li>• CID-11: Doenças Psiquiátricas</li>
-                <li>• Protocolos de Bioengenharia</li>
-                <li>• Neurociência Avançada</li>
-            </ul>
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
+            <h3 class="text-yellow-500 font-bold mb-2">⚖️ LEIS</h3>
+            <p class="text-[11px] text-gray-400 italic">Constituição Federal e Leis Internacionais.</p>
         </div>
-
-        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
-            <h3 class="text-yellow-400 font-black mb-4 uppercase">⚖️ Leis do Brasil & Mundo</h3>
-            <ul class="text-[11px] space-y-2 text-gray-400">
-                <li>• Vade Mecum Digital Completo</li>
-                <li>• Direito Internacional e Espacial</li>
-                <li>• Constituição Federal Atualizada</li>
-                <li>• Jurisprudência Mundial</li>
-            </ul>
-        </div>
-
-        <div class="bg-[#0d1117] border border-blue-900 p-6 rounded-xl">
-            <h3 class="text-purple-400 font-black mb-4 uppercase">⚛️ Física & Álgebra Linear</h3>
-            <ul class="text-[11px] space-y-2 text-gray-400">
-                <li>• Mecânica Quântica Aplicada</li>
-                <li>• Matrizes e Vetores Complexos</li>
-                <li>• Pesquisas Científicas Globais</li>
-                <li>• Códigos de Programação Zeus</li>
-            </ul>
+        <div class="bg-[#0d1117] p-6 border border-blue-900 rounded-xl">
+            <h3 class="text-purple-500 font-bold mb-2">⚛️ CIÊNCIA</h3>
+            <p class="text-[11px] text-gray-400 italic">Física Quântica e Álgebra Linear.</p>
         </div>
     </div>
 </div>
 
 <script>
-    function criarConta() {
-        const u = document.getElementById('new-user').value;
-        const p = document.getElementById('new-pass').value;
-        if(u && p) {
-            alert("SISTEMA ZEUS: Carregando banco de dados universal...");
-            document.getElementById('auth-container').classList.add('hidden');
-            document.getElementById('main-panel').classList.remove('hidden');
-            setTimeout(() => { alert("Degustação de 5 min encerrada."); location.reload(); }, 300000);
-        } else { alert("Insira usuário e senha."); }
+    function entrar() {
+        if(document.getElementById('user').value && document.getElementById('pass').value) {
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('painel').classList.remove('hidden');
+            // Cronômetro de 5 minutos
+            setTimeout(() => {
+                alert("TESTE FINALIZADO! Realize o PIX para liberar o Zeus permanentemente.");
+                location.reload();
+            }, 300000);
+        } else { alert("Preencha os campos!"); }
     }
-
-    function acessoAdm() {
+    function adm() {
         if(prompt("SENHA MESTRE:") === "adminzeus") {
-            document.getElementById('auth-container').classList.add('hidden');
-            document.getElementById('main-panel').classList.remove('hidden');
+            document.getElementById('login-box').classList.add('hidden');
+            document.getElementById('painel').classList.remove('hidden');
         }
     }
 </script>
 </body>
 </html>
+
