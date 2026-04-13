@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>ZEUS // CENTRAL GLOBAL DE ENGENHARIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #020617; color: #f8fafc; font-family: monospace; }
+        .cyber-card { background: rgba(15, 23, 42, 0.9); border: 1px solid #1e40af; margin-bottom: 10px; padding: 15px; border-radius: 8px; transition: 0.3s; }
+        .cyber-card:hover { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+        .firewall-active { border-top: 2px solid #ef4444; background: rgba(239, 68, 68, 0.05); }
+    </style>
+</head>
+<body class="p-5">
+
+    <div class="firewall-active p-2 mb-6 text-[10px] flex justify-between uppercase font-bold tracking-tighter">
+        <span class="text-red-500 animate-pulse">● SISTEMA DE SEGURANÇA 1.131: ATIVO</span>
+        <span class="text-blue-400 font-black tracking-widest text-white">ZEUS / FELIPE.30</span>
+        <span class="text-green-500">CRIPTOGRAFIA: ON</span>
+    </div>
+
+    <header class="text-center mb-10">
+        <h1 class="text-5xl font-black text-white italic tracking-tighter uppercase">ZEUS <span class="text-blue-500">PORTAL</span></h1>
+        <p class="text-xs text-slate-500 mt-2">CENTRAL MUNDIAL DE PESQUISA E ENGENHARIA</p>
+    </header>
+
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
+        
+        <div class="cyber-card">
+            <h2 class="text-blue-500 font-bold border-b border-blue-900 mb-4 uppercase">HUB 1.1: ENGENHARIAS</h2>
+            <ul class="text-[11px] space-y-2 text-slate-300">
+                <li>• Engenharia Civil (Estruturas/Hidráulica)</li>
+                <li>• Engenharia Elétrica & Potência</li>
+                <li>• Engenharia Mecânica & Naval</li>
+                <li>• Engenharia Nuclear & Aeroespacial</li>
+            </ul>
+        </div>
+
+        <div class="cyber-card">
+            <h2 class="text-blue-500 font-bold border-b border-blue-900 mb-4 uppercase">HUB 1.2: DEEP TECH</h2>
+            <ul class="text-[11px] space-y-2 text-slate-300">
+                <li>• Ciência da Computação & IA Zeus</li>
+                <li>• Álgebra Linear & Matrizes</li>
+                <li>• Física Quântica (Mecânica subatômica)</li>
+                <li>• Hardware de Alta Performance</li>
+            </ul>
+        </div>
+
+        <div class="cyber-card">
+            <h2 class="text-blue-500 font-bold border-b border-blue-900 mb-4 uppercase">HUB 1.3: PESQUISA</h2>
+            <ul class="text-[11px] space-y-2 text-slate-300">
+                <li>• Bibliotecas Técnicas do Mundo</li>
+                <li>• Repositórios de Ciência Global</li>
+                <li>• Base de Dados de Hardware</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer class="mt-20 text-center border-t border-blue-900 pt-10">
+        <p class="text-[10px] text-slate-600 uppercase tracking-widest italic">Base Zeus v1.131 - Operação Felipe - São Paulo Hub</p>
+    </footer>
+
+    <script>
+        // FIREWALL 1.131 LOGIC
+        console.log("Monitor de Segurança 1.131 Inicializado.");
+        // Bloqueia comandos básicos de inspeção
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) return false; // Bloqueia F12
+        }
+    </script>
+</body>
+</html>
+
