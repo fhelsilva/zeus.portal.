@@ -3,98 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEUS OS // PRIVACIDADE TOTAL</title>
+    <title>ZEUS OS // SISTEMA GLOBAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
     <style>
         body { background: #010409; color: #e6edf3; font-family: monospace; overflow-x: hidden; }
-        .folder { background: #161b22; border: 1px solid #30363d; padding: 20px; border-radius: 12px; cursor: pointer; text-align: center; transition: 0.3s; }
-        .folder:hover { border-color: #58a6ff; transform: translateY(-5px); }
         .hidden { display: none; }
-        .particle { position: absolute; width: 2px; height: 2px; background: #58a6ff; border-radius: 50%; opacity: 0.3; animation: float 10s infinite linear; }
-        @keyframes float { from { transform: translateY(100vh); } to { transform: translateY(-10vh); } }
+        
+        /* MOTOR DE PARTÍCULAS QUÂNTICAS - FÍSICA ATIVA */
+        #quantum-engine { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .particle { position: absolute; width: 3px; height: 3px; background: rgba(88, 166, 255, 0.5); border-radius: 50%; animation: move 12s infinite ease-in-out; }
+        .particle-light { background: rgba(35, 134, 54, 0.4); }
+        @keyframes move { from { transform: translate(0, 0); opacity: 0; } 20% { opacity: 0.8; } 80% { opacity: 0.8; } to { transform: translate(100vw, 100vh); opacity: 0; } }
+        
+        /* ESTILOS DE PASTAS E CONTEÚDO */
+        .card-zeus { background: #0d1117; border: 1px solid #30363d; padding: 25px; border-radius: 12px; cursor: pointer; transition: 0.3s; position: relative; z-index: 2; }
+        .card-zeus:hover { border-color: #238636; box-shadow: 0 0 20px rgba(35, 134, 54, 0.2); }
     </style>
 </head>
-<body class="p-6">
+<body class="p-6 md:p-12 relative">
 
-    <div id="particles-bg"></div>
+    <div id="quantum-engine"></div>
 
-    <div id="step-pay" class="max-w-md mx-auto mt-10 p-8 bg-[#0d1117]/90 border border-blue-900 rounded-2xl shadow-2xl relative z-10">
-        <h1 class="text-4xl font-black text-center text-white mb-2 italic">ZEUS <span class="text-blue-500 text-2xl text-center">SYSTEM</span></h1>
-        
-        <div class="mb-6 p-2 border border-blue-500/20 rounded-lg text-center">
-            <p class="text-[8px] text-blue-400 uppercase mb-2">🔭 Live NASA Feed</p>
-            <div id="nasa-img" class="h-32 bg-black rounded overflow-hidden flex items-center justify-center text-[10px] text-slate-700 italic italic text-center">Conectando...</div>
-        </div>
-
-        <div class="text-center p-6 bg-green-900/10 border border-green-500/50 rounded-lg mb-6">
-            <p class="text-[10px] text-green-500 font-bold mb-2 uppercase italic">Acesso Individual VIP: R$ 150,00</p>
-            <p class="text-sm font-bold text-white uppercase italic text-center">PIX: maiconfhel23@gmail.com</p>
-        </div>
-
-        <button onclick="irParaCadastro()" class="w-full bg-[#238636] hover:bg-green-600 text-white font-bold py-4 rounded-lg transition uppercase text-xs tracking-[0.2em] mb-4 italic text-center">
-            Já paguei, liberar meu acesso
-        </button>
-
-        <div class="text-center border-t border-slate-800 pt-4">
-            <button onclick="acessoAdmin()" class="text-[9px] text-slate-600 hover:text-blue-500 transition uppercase tracking-widest italic text-center">
-                ⚙️ Painel do Administrador (Felipe)
-            </button>
-        </div>
-    </div>
-
-    <div id="step-desktop" class="hidden max-w-6xl mx-auto relative z-10">
-        <header class="flex justify-between items-center border-b border-blue-900 pb-4 mb-8">
-            <h1 class="text-2xl font-black italic">ZEUS <span class="text-blue-500">WORKSTATION</span></h1>
-            <button onclick="location.reload()" class="text-[9px] border border-red-900 px-4 py-1 rounded text-red-500 italic text-center">SAIR DO SISTEMA</button>
+    <div id="login-box" class="max-w-xl mx-auto mt-10 p-8 border border-blue-900 bg-[#0d1117] rounded-xl shadow-2xl relative z-2">
+        <header class="text-center mb-8 pb-4 border-b border-blue-900/30">
+            <h1 class="text-3xl font-black italic text-white uppercase tracking-tighter">ZEUS <span class="text-blue-500 text-2xl uppercase">SYSTEM</span></h1>
+            <p class="text-[10px] text-green-500 font-bold mt-2">PAGAMENTO VIA PIX: maiconfhel23@gmail.com</p>
         </header>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="folder border-blue-500">📂 CIÊNCIA DA COMPUTAÇÃO</div>
-            <div class="folder">📂 ENGENHARIA MUNDIAL</div>
-            <div class="folder">📂 FÍSICA QUÂNTICA</div>
-            <div class="folder">📂 ÁLGEBRA LINEAR</div>
-            <div class="folder">📂 ARITMÉTICA</div>
-            <div class="folder">📂 DIREITO & LEIS</div>
-            <div class="folder text-red-500">📂 PESQUISA DA CURA</div>
-            <div class="folder text-slate-500">📂 MEUS ARQUIVOS</div>
+        <p class="text-[11px] mb-8 text-slate-500 text-center italic italic uppercase">
+            "Cálculos de Álgebra, Física Quântica e Engenharias Mundiais Protegidos pelo Firewall 1.131"
+        </p>
+
+        <input type="password" id="entry-key" placeholder="DIGITE SUA CHAVE DE ACESSO" 
+               class="w-full bg-black border border-blue-900 p-4 text-white text-center rounded mb-4 outline-none focus:border-green-500">
+        
+        <button onclick="autenticar()" class="w-full bg-blue-600 hover:bg-green-600 text-white font-bold py-4 rounded transition uppercase text-xs tracking-widest italic text-center">
+            Acessar Todo Conhecimento Universal
+        </button>
+    </div>
+
+    <div id="main-panel" class="hidden max-w-7xl mx-auto relative z-2">
+        <header class="border-b border-blue-900 pb-6 mb-12 flex justify-between items-center">
+            <div>
+                <h1 class="text-5xl font-black italic text-white">ZEUS <span class="text-blue-500">ENGINE</span></h1>
+                <p class="text-xs text-slate-600 mt-2 uppercase">Central de Cálculo e Pesquisa Global // ADMIN: FELIPE</p>
+            </div>
+            <button onclick="location.reload()" class="text-[9px] border border-red-900 px-4 py-1 rounded text-red-500 hover:bg-red-900/10 italic text-center">LOGOUT</button>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="card-zeus text-purple-400">
+                <h3 class="text-lg font-bold italic mb-3 uppercase">⚛ FÍSICA QUÂNTICA</h3>
+                <p class="text-[10px] text-slate-500">Mecânica de partículas e equações complexas.</p>
+            </div>
+
+            <div class="card-zeus text-emerald-400">
+                <h3 class="text-lg font-bold italic mb-3 uppercase">∑ ÁLGEBRA LINEAR</h3>
+                <input type="text" id="solveInput" placeholder="Digite cálculo matricial..." class="w-full bg-black border border-emerald-900 p-2 text-xs rounded mb-2">
+                <button onclick="resolverMatriz()" class="text-[9px] bg-emerald-800 px-4 py-2 rounded text-white font-bold">SOLVE</button>
+                <div id="matrizRes" class="mt-2 text-emerald-400 text-sm font-bold"></div>
+            </div>
+
+            <div class="card-zeus text-sky-400">
+                <h3 class="text-lg font-bold italic mb-3 uppercase">🏗 ENGENHARIA MUNDIAL</h3>
+                <p class="text-[10px] text-slate-500">Cálculos de vigas, estruturas e hidráulica.</p>
+            </div>
+
+            <div class="card-zeus text-yellow-500">
+                <h3 class="text-lg font-bold italic mb-3 uppercase">⚖ TODAS AS LEIS</h3>
+                <p class="text-[10px] text-slate-500">Base Jurídica Brasileira e Internacional.</p>
+            </div>
+
+            <div class="card-zeus text-orange-400">
+                <h3 class="text-lg font-bold italic mb-3 uppercase">💻 CIÊNCIA DA COMPUTAÇÃO</h3>
+                <p class="text-[10px] text-slate-500">Algoritmos Zeus e Inteligência Artificial.</p>
+            </div>
+
+            <div class="card-zeus text-red-500">
+                <h3 class="text-lg font-bold italic mb-3 uppercase">🧪 PESQUISA DA CURA</h3>
+                <p class="text-[10px] text-slate-500">Base de Dados Científica Global.</p>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // CRIA AS PARTÍCULAS DE FÍSICA
-        for(let i=0; i<30; i++) {
+        // MOTOR DE CIÊNCIA: CRIA PARTÍCULAS QUÂNTICAS "SOBREVOANDO"
+        for(let i=0; i<40; i++) {
             let p = document.createElement('div');
             p.className = 'particle';
+            if(Math.random() > 0.5) p.className += ' particle-light';
             p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = Math.random() * 100 + 'vh';
             p.style.animationDelay = Math.random() * 10 + 's';
-            document.getElementById('particles-bg').appendChild(p);
+            p.style.animationDuration = Math.random() * 15 + 10 + 's';
+            document.getElementById('quantum-engine').appendChild(p);
         }
 
-        // BUSCA IMAGEM DA NASA
-        async function getNasa() {
+        // FUNÇÃO DE ACESSO (O TUDO)
+        function autenticar() {
+            if(document.getElementById('entry-key').value === "felipe34") {
+                document.getElementById('login-box').classList.add('hidden');
+                document.getElementById('main-panel').classList.remove('hidden');
+                document.getElementById('entry-key').value = "";
+            } else { alert("ACESSO NEGADO: Realize o Pix de R$ 150,00."); }
+        }
+
+        // MOTOR DE CÁLCULO MUNDIAL (MATHJS)
+        function resolverMatriz() {
+            const exp = document.getElementById('solveInput').value;
             try {
-                const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
-                const data = await res.json();
-                document.getElementById('nasa-img').innerHTML = `<img src="${data.url}" class="w-full h-full object-cover opacity-60">`;
-            } catch(e) { document.getElementById('nasa-img').innerText = "Sistema Offline"; }
-        }
-        getNasa();
-
-        function irParaCadastro() {
-            const senha = prompt("INSIRA SUA CHAVE MESTRA (Enviada após o Pix):");
-            if(senha === "felipe34") {
-                document.getElementById('step-pay').classList.add('hidden');
-                document.getElementById('step-desktop').classList.remove('hidden');
-            } else { alert("Chave Inválida. Verifique o pagamento."); }
-        }
-
-        function acessoAdmin() {
-            const master = prompt("SENHA DO ADMINISTRADOR FELIPE:");
-            if(master === "adminzeus") {
-                alert("ACESSO ADMINISTRATIVO CONCEDIDO.");
-                document.getElementById('step-pay').classList.add('hidden');
-                document.getElementById('step-desktop').classList.remove('hidden');
+                const resultado = math.evaluate(exp);
+                document.getElementById('matrizRes').innerText = "ZEUS SOLVE: " + resultado;
+            } catch (e) {
+                document.getElementById('matrizRes').innerText = "ERRO TÉCNICO: Cálculo inválido.";
             }
         }
     </script>
